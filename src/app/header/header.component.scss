@@ -1,0 +1,42 @@
+$navbarColor: lightblue;
+$buttonHoverColor: lightgrey;
+$textColor:black;
+.navbar{
+  display: flex;
+  width: 100%;
+  background:$navbarColor;
+  padding:25px;
+  .left{
+    justify-content: start;
+    flex-grow: 1;
+    a{
+      font-size: 25px;
+      padding:25px;
+      border-radius: 0;
+      border: 0;
+      background:$navbarColor;
+      text-decoration: none;
+      color: $textColor;
+    }
+    a:hover{
+      background:$buttonHoverColor;
+      cursor: pointer;
+    }
+  }
+  .right{
+    padding-right: 50px;
+    a{
+      font-size: 25px;
+      border-radius: 0;
+      padding:25px;
+      border: 0;
+      background:$navbarColor;
+      text-decoration: none;
+      color: $textColor;
+    }
+    a:hover{
+      background:$buttonHoverColor;
+      cursor: pointer;
+    }
+  }
+}
