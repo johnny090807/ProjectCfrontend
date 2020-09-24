@@ -1,0 +1,64 @@
+$loginFormColor:rgb(0, 0, 0);
+$textColor: white;
+.loginFormContainer{
+    background-color:$loginFormColor;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    form{
+        grid-column: 2;
+        .loginForm{
+            .errorLabel{
+                margin-left: 50%;
+                div{
+                    white-space: nowrap;
+                    font-size: 25px;
+                    color: red;
+                }
+            }
+            h1{
+                word-wrap: normal;
+                text-align: center;
+                grid-column: 2;
+            }
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+            .username, .password{
+                height: 50px;
+                font-size: 25px;
+                margin: 25px;
+                margin-right: 10%;
+                margin-left: 10%;
+                grid-column-start: 1;
+                grid-column-end: 4;
+                background:none;
+                border: 1px solid $textColor;
+            }
+            .buttonDiv{
+                grid-column-start: 1;
+                grid-column-end: 4;
+                float: left;
+                margin: 25px;
+                margin-left: 10%;
+                margin-right: 10%;
+                margin-top: 25px;
+                font-size: 50px;
+                button,input{
+                    min-width: 125px;
+                    width: 100%;
+                    height: 50px;
+                    background: $loginFormColor;
+                    border: 1px solid white;
+                    color: $textColor;
+                    font-size: x-large;
+                }
+            }
+            button:active{
+                background: rgb(255, 255, 255);
+            }
+            button:hover{
+                background: rgb(136, 136, 136);
+            }
+        }
+    }
+}
