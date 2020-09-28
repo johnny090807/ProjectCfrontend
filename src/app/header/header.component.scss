@@ -8,7 +8,7 @@ $buttonActiveColor:rgb(189, 104, 26);
   background:$navbarColor;
   padding:25px;
   padding-left: 100px;
-  @media screen and (max-width: 1130px) {
+  @media screen and (max-width: 1170px) {
     padding: 25px;
     display: grid;
     grid-template-rows: 17% 17% 17% 17% 17% 17%;
@@ -30,7 +30,7 @@ $buttonActiveColor:rgb(189, 104, 26);
     }
     outline: none;
   }
-    justify-content: start;
+    justify-content: flex-start;
     flex-grow: 1;
     a{
       font-size: 25px;
@@ -44,12 +44,12 @@ $buttonActiveColor:rgb(189, 104, 26);
     .login{
       margin-left: auto;
     }
-    @media screen and (max-width: 1130px) {
+    @media screen and (max-width: 1170px) {
       .login{
         margin-left: 0;
       }
       .register{
-        width: 80%;
+        width: calc(85% + 1px);
       }
     }
     .register{

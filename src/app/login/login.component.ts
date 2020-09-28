@@ -9,6 +9,7 @@ import { LoginService } from './login-service.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  errorLabel: string;
   constructor(private formBuilder: FormBuilder,
               private loginService: LoginService) { }
 
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(values){
     if (values.username != "" && values.password != ""){
+      this.errorLabel = "";
       return this.loginService.checkLogin(values.username, values.password);
+    }else{
+      this.errorLabel = "The information is not correct."     
     }
   }
 }

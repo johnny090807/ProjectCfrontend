@@ -21,6 +21,7 @@ $textColor: white;
                 text-align: center;
                 grid-column: 2;
             }
+            
             display: grid;
             grid-template-columns: 25% 50% 25%;
             .username, .password{
@@ -33,6 +34,12 @@ $textColor: white;
                 grid-column-end: 4;
                 background:none;
                 border: 1px solid $textColor;
+            }
+            @media screen and (max-width: 1170px) {
+                .username, .password{
+                    margin-left: -75px;
+                    margin-right: -75px;
+                }
             }
             .buttonDiv{
                 grid-column-start: 1;
