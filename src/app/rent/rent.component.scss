@@ -1,0 +1,94 @@
+$BackgroundColor: grey;
+*{
+    color: black;
+}
+.container{
+    width: 94%;
+    display: grid;
+    grid-template-columns: 20% 15% 45% 20%;
+    gap: 25px;
+    h1{
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    @media screen and (max-width: 1170px) {
+        h1{
+            grid-column-start: 1;
+            grid-column-end:5;
+        }
+    }
+    .filterBar{
+        grid-column: 2;
+        grid-row-start: 2;
+        font-size: 20px;
+            div{
+                background-color: $BackgroundColor;
+                input{
+                    margin: 5px;
+                    height: 25px;
+                    width: 25px;
+                }
+        }
+        
+    }
+    @media screen and (max-width: 2080px) {
+            .filterBar{
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+    }
+    .occasionBar{
+        display: grid;
+        grid-column: 3;
+        .occasion{
+            .top{
+                div{
+                    margin: 25px;
+                }
+                background-color: $BackgroundColor;
+                padding-top: 35px;
+                padding-bottom: 35px;
+                img{
+                    margin-left: 10px;
+                    height: 75%;
+                    width: 100%;
+                }
+                display: grid;
+                grid-template-columns: 20% 60% 20%;
+            }
+            .bottom{
+                font-size: 23px;
+                background-color: rgb(138, 138, 138);
+                display: grid;
+                grid-template-columns: 15% 25% 25% 35%;
+                .beoordeling{
+                    grid-column: 2;
+                }
+                .straatnaam{
+                    grid-column: 3;
+                }
+                button{
+                    font-size: 25px;
+                    background-color: #39aa2e;
+                    grid-column:4;
+                    margin: 15px;
+                    margin-left: 40%;
+                    height: 50px;
+                }
+            }
+        } 
+    }
+    
+    @media screen and (max-width: 2080px) {
+        .occasionBar{
+            grid-column-start:2;
+            grid-column-end: 4;
+        }
+    }
+    @media screen and (max-width: 1524px) {
+        .occasionBar{
+            grid-column-start:1;
+            grid-column-end: 5;
+        }
+    }
+}

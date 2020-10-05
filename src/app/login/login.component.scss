@@ -1,5 +1,5 @@
-$loginFormColor:rgb(0, 0, 0);
-$textColor: white;
+$loginFormColor: black;
+$textColor: black;
 .loginFormContainer{
     background-color:$loginFormColor;
     height: 100%;
@@ -32,8 +32,11 @@ $textColor: white;
                 margin-left: 10%;
                 grid-column-start: 1;
                 grid-column-end: 4;
-                background:none;
-                border: 1px solid $textColor;
+                background:grey;
+                border: 1px solid white;
+            }
+            ::placeholder{
+                color:black;
             }
             @media screen and (max-width: 1170px) {
                 .username, .password{
@@ -54,7 +57,7 @@ $textColor: white;
                     min-width: 125px;
                     width: 100%;
                     height: 50px;
-                    background: $loginFormColor;
+                    background: grey;
                     border: 1px solid white;
                     color: $textColor;
                     font-size: x-large;

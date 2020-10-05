@@ -1,5 +1,13 @@
 <div class="container">
     <div class="registerForm">
-        
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+            <h1>Register:</h1>
+            <input type="text" formControlName="firstName" placeholder="First name">
+            <input type="text" formControlName="lastName" placeholder="Last name">
+            <input type="text" formControlName="Address" placeholder="Address"> 
+            <input type="text" formControlName="EmailAddress" placeholder="Email address">
+            <input type="submit" value="Register">
+            <input type="submit" value="Login" [routerLink]="[ '/Login' ]">
+        </form>
     </div>
 </div>

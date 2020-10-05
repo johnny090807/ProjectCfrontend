@@ -1,0 +1,28 @@
+.container{
+    .registerForm{
+        margin:0;
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        form{
+            h1{
+                text-align: center;
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-column: 2;
+            input{
+                background-color: grey;
+                border: 1px solid white;
+                margin: 25px;
+                height: 50px;
+                color:black;
+                font-size: 25px;
+            }
+            input::placeholder {
+                color: black;
+              }
+        }
+    }
+}

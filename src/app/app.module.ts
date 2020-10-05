@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { RentComponent } from './rent/rent.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UniquePipe } from './Pipes/unique.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     AboutComponent,
-    RentComponent
+    RentComponent,
+    UniquePipe
   ],
   imports: [
     BrowserModule,
