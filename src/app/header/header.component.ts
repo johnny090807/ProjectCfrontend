@@ -6,17 +6,22 @@ import { Component, OnInit } from '@angular/core';
     <nav class ="navbar is-dark is-bold">
       <!-- Logo -->
       <div class = "navbar-brand">
-       <a class = "navbar-item">
+       <a class = "navbar-item" routerLink="Home">
         CrsX
        </a>
        </div>
 
           <!-- menu -->
       <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" routerLink="">Home</a>
-          <a class="navbar-item" routerLink="contact">Contact</a>
-        </div>
+      <div class="navbar-start">
+        <a class="navbar-item" routerLink="Home">Home</a>
+        <a class="navbar-item" routerLink="Contact">Contact</a>
+        <a class="navbar-item" routerLink="Rent">Rent</a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" routerLink="Login">Login</a>
+        <a class="navbar-item" routerLink="Register">Register</a>
+      </div>
       </div>
 </nav>
   `,
