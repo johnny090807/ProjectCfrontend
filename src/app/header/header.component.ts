@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login/login-service.service';
+import { User } from '../login/user.model';
 
 @Component({
   selector: 'app-header',
@@ -18,21 +20,33 @@ import { Component, OnInit } from '@angular/core';
         <a class="navbar-item" routerLink="Contact">Contact</a>
         <a class="navbar-item" routerLink="Rent">Rent</a>
       </div>
-      <div class="navbar-end">
+      <div *ngIf="this.loggedIn() == null" class="navbar-end">
         <a class="navbar-item" routerLink="Login">Login</a>
         <a class="navbar-item" routerLink="Register">Register</a>
       </div>
+      <div *ngIf="this.loggedIn() != null" class="navbar-end">
+        <a class="navbar-item" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
+        <a class="navbar-item" (click)="this.Logout()">Logout</a>
       </div>
-</nav>
+      </div>
+    </nav>
   `,
   styles: [
   ]
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  loggedInUser : User;
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
+  }
+  public loggedIn(){
+    this.loggedInUser = this.loginService.loggedInUser;
+    return this.loginService.loggedInUser;
+  }
+  public Logout(){
+    this.loggedInUser = null;
+    this.loginService.loggedInUser = null;
   }
 
 }
