@@ -10,10 +10,16 @@ $textColor: black;
         .loginForm{
             .errorLabel{
                 margin-left: 50%;
-                div{
+                .errorMessage{
                     white-space: nowrap;
                     font-size: 25px;
                     color: red;
+                }
+            
+            .validateMessage{
+                    white-space: nowrap;
+                    font-size: 25px;
+                    color: green;
                 }
             }
             h1{

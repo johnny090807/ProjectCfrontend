@@ -1,14 +1,14 @@
 <div class="loginFormContainer">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" action="*" required>
         <div class="loginForm">
-            <h1>Log in:</h1>
+            <h1 style="color:white">Log in:</h1>
             <input class="username" formControlName="username" type="text" placeholder="Username" required>
             <div class="errorLabel" *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
-                <div *ngIf="loginForm.controls.username.errors.required">Fill in a username!</div>
+                <div class="errorMessage" *ngIf="loginForm.controls.username.errors.required">Fill in a username!</div>
             </div>
             <input class="password" formControlName="password" type="password" placeholder="Password" required>
             <div class="errorLabel" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
-                <div *ngIf="loginForm.controls.password.errors.required">Fill in a password!</div>
+                <div class="errorMessage" *ngIf="loginForm.controls.password.errors.required">Fill in a password!</div>
             </div>
             <div class="buttonDiv">
                 <input type="submit" value="Login!">
@@ -16,6 +16,7 @@
             </div>
             <div class="errorLabel">
                 <div class="errorMessage">{{this.errorLabel}}</div>
+                <div class="validateMessage">{{this.validateLabel}}</div>
             </div>
         </div>
     </form>

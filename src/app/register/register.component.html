@@ -1,13 +1,55 @@
 <div class="container">
     <div class="registerForm">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-            <h1>Register:</h1>
-            <input type="text" formControlName="firstName" placeholder="First name">
-            <input type="text" formControlName="lastName" placeholder="Last name">
-            <input type="text" formControlName="Address" placeholder="Address"> 
-            <input type="text" formControlName="EmailAddress" placeholder="Email address">
-            <input type="submit" value="Register">
-            <input type="submit" value="Login" [routerLink]="[ '/Login' ]">
+            <h1 style="color:white">Register:</h1>
+            <div>
+                <h1 style="color: white;">First Name:</h1>
+                <input type="text" formControlName="firstName" placeholder="First name" required>
+                <div class="errorLabel" *ngIf="registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)">
+                    <div *ngIf="registerForm.controls.firstName.errors.required">Fill in your firstname!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">Last name:</h1>
+                <input type="text" formControlName="lastName" placeholder="Last name" required>
+                <div class="errorLabel" *ngIf="registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)">
+                    <div *ngIf="registerForm.controls.lastName.errors.required">Fill in your last name!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">Username:</h1>
+                <input type="text" formControlName="userName" placeholder="User name" required> 
+                <div class="errorLabel" *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched)">
+                    <div *ngIf="registerForm.controls.userName.errors.required">Fill in your username!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">Password:</h1>
+                <input type="password" formControlName="password" placeholder="Password" required> 
+                <div class="errorLabel" *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+                    <div *ngIf="registerForm.controls.password.errors.required">Fill in your password!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">Address:</h1>
+                <input type="text" formControlName="Address" placeholder="Address" required> 
+                <div class="errorLabel" *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched)">
+                    <div *ngIf="registerForm.controls.Address.errors.required">Fill in your address!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">Email:</h1>
+                <input type="email" formControlName="EmailAddress" placeholder="Email address" required>
+                <div class="errorLabel" *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched)">
+                    <div *ngIf="registerForm.controls.EmailAddress.errors.required">This is not a real email address!</div>
+                </div>
+            </div>
+            <div>
+                <input class="registerButton" type="submit" [disabled]="!this.registerForm.valid" value="Register">
+            </div>
+            <div>
+                <input style="cursor: pointer;" type="submit" value="Login" [routerLink]="[ '/Login' ]">
+            </div>
         </form>
     </div>
 </div>
