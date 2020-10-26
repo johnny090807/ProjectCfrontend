@@ -1,26 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from '../login/login-service.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  template: `
+    <nav class ="navbar is-dark is-bold">
+      <!-- Logo -->
+      <div class = "navbar-brand">
+       <a class = "navbar-item">
+        CrsX
+       </a>
+       </div>
+
+          <!-- menu -->
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" routerLink="">Home</a>
+          <a class="navbar-item" routerLink="contact">Contact</a>
+        </div>
+      </div>
+</nav>
+  `,
+  styles: [
+  ]
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService : LoginService,
-              private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-  }
-  loggedIn(){
-    return this.loginService.loggedInUser;
-  }
-  logout(){
-    this.router.navigate(['/Home']);
-    this.loginService.loggedInUser = null;
   }
 
 }

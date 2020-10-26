@@ -1,12 +1,18 @@
-<nav class="navbar">
-  <p routerLink="/Home">Johnny's car rental</p>
-    <a routerLink="/Home" type="button" class="home" routerLinkActive="active">Home</a>
-    <a routerLink="/Rent" type="button" class="rent" routerLinkActive="active">Rent a car!</a>
-    <a routerLink="/About" type="button" class="about" routerLinkActive="active">About us</a>
-    <a routerLink="/Login" type="button" *ngIf="this.loggedIn() == null" class="login" routerLinkActive="active">Log in</a>
-    <a routerLink="/Register" type="button" *ngIf="this.loggedIn() == null" class="register" routerLinkActive="active">Register</a>
-    <a routerLink="/Login/{{this.loggedIn().id}}" type="button" *ngIf="this.loggedIn() != null" class="login" routerLinkActive="active">{{this.loggedIn().firstName}} {{ this.loggedIn().lastName }}</a>
-    <a (click)="logout()" type="button" *ngIf="this.loggedIn() != null" class="register" routerLinkActive="active">Log out</a>
+<nav class ="navbar is-dark is-bold">
+  <!-- Logo -->
+  <div class = "navbar-brand">
+   <a class = "navbar-item">
+    CrsX
+   </a>
+   </div>
+
+      <!-- menu -->
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink="">Home</a>
+      <a class="navbar-item" routerLink="contact">Contact</a>
+    </div>
+  </div>
 </nav>
 <!-- =======
   <a routerLink="/Admin" type="button" class="admin" routerLinkActive="active"
