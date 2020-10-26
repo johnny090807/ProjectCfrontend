@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'Rent', component: RentComponent },
   { path: 'Rent/:id', component: RentComponent },
   { path: '**', component: HomeComponent },
+  { path: 'Contact', component: ContactComponent }
 ];
 
 @NgModule({
