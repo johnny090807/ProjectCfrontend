@@ -1,7 +1,16 @@
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+  <div class="container">
+
+    <h1 class="title">Register:</h1>
+  </div>
+  </div>
+</section>
+
+<section class="section">
 <div class="container">
     <div class="registerForm">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-            <h1 style="color:white">Register:</h1>
             <div>
                 <h1 style="color: white;">First Name:</h1>
                 <input type="text" formControlName="firstName" placeholder="First name" required>
@@ -18,21 +27,21 @@
             </div>
             <div>
                 <h1 style="color: white;">Username:</h1>
-                <input type="text" formControlName="userName" placeholder="User name" required> 
+                <input type="text" formControlName="userName" placeholder="User name" required>
                 <div class="errorLabel" *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched)">
                     <div *ngIf="registerForm.controls.userName.errors.required">Fill in your username!</div>
                 </div>
             </div>
             <div>
                 <h1 style="color: white;">Password:</h1>
-                <input type="password" formControlName="password" placeholder="Password" required> 
+                <input type="password" formControlName="password" placeholder="Password" required>
                 <div class="errorLabel" *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
                     <div *ngIf="registerForm.controls.password.errors.required">Fill in your password!</div>
                 </div>
             </div>
             <div>
                 <h1 style="color: white;">Address:</h1>
-                <input type="text" formControlName="Address" placeholder="Address" required> 
+                <input type="text" formControlName="Address" placeholder="Address" required>
                 <div class="errorLabel" *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched)">
                     <div *ngIf="registerForm.controls.Address.errors.required">Fill in your address!</div>
                 </div>
@@ -53,3 +62,4 @@
         </form>
     </div>
 </div>
+</section>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
 import { Car } from './car.model';
 import { CarService } from './car.service';
 @Component({
