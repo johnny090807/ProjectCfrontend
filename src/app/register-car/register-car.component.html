@@ -1,0 +1,9 @@
+<form [formGroup]="CarRegisterForm" (ngSubmit)="onSubmit(CarRegisterForm.value)">
+    <input type="text" formControlName="brand">
+    <input type="text" formControlName="model">
+    <input type="text" formControlName="location">
+    <input type="number" formControlName="carAge">
+    <input type="number" formControlName="mileage">
+    <input type="number" formControlName="doors">
+    <input type="submit" value="Add car!">
+</form>

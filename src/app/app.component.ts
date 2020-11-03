@@ -13,7 +13,7 @@ export class AppComponent {
   title = "CrsX test"
 
   constructor(private http: HttpClient){
-    http.get(`http://localhost:8080/pageTitles/1`, {responseType: 'text'})
+    http.get('http://localhost:8080/pageTitles/1', {responseType: 'text'})
     .pipe(
       catchError((err)=> {
         console.log(err);

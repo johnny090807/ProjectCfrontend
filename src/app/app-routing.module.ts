@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { RentComponent } from './rent/rent.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
+import { RegisterCarComponent } from './register-car/register-car.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'About', component: AboutComponent },
   { path: 'Rent', component: RentComponent },
   { path: 'Rent/:id', component: RentComponent },
+  { path: 'CarRegister', component: RegisterCarComponent },
   { path: '**', component: HomeComponent },
   { path: 'Contact', component: ContactComponent }
 ];
