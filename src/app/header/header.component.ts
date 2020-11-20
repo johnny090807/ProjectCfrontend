@@ -58,8 +58,11 @@ export class HeaderComponent implements OnInit {
     return this.loginService.loggedInUser;
   }
   public Logout(){
-    this.loggedInUser = null;
-    this.loginService.loggedInUser = null;
+    var res = confirm("Do you really want to logout?");
+    if(res){
+      this.loggedInUser = null;
+      this.loginService.loggedInUser = null;
+    }
   }
   
 }

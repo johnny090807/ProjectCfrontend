@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarClass } from './carClass.model';
@@ -29,12 +29,10 @@ export class RegisterCarComponent implements OnInit {
   
   onSubmit(values){
     const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors);
-    this.http.post('http://localhost:8080/addCar', carToBeAdded)
-    .pipe(
-      catchError((err)=> {
-        console.log(err);
-        return of('404 not Found');
-      })
-    )
+    let body = JSON.stringify(carToBeAdded);
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    this.http.post('http://localhost:8080/api/addCar', body, {headers, responseType: 'text'})
+    .subscribe(message => alert(message),
+    error => alert(error.message))
   }
 }

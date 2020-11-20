@@ -1,10 +1,10 @@
 export class CarClass {
     constructor(
-        brand: string,
-        model: string,
-        location: string,
-        carAge: number,
-        mileage: number,
-        doors: number
+        public brand: string,
+        public model: string,
+        public location: string,
+        public carAge: number,
+        public mileage: number,
+        public doors: number
     ){}
 }

@@ -1,9 +1,31 @@
-<form [formGroup]="CarRegisterForm" (ngSubmit)="onSubmit(CarRegisterForm.value)">
-    <input type="text" formControlName="brand">
-    <input type="text" formControlName="model">
-    <input type="text" formControlName="location">
-    <input type="number" formControlName="carAge">
-    <input type="number" formControlName="mileage">
-    <input type="number" formControlName="doors">
-    <input type="submit" value="Add car!">
-</form>
+<section class="section">
+    <form [formGroup]="CarRegisterForm" (ngSubmit)="onSubmit(CarRegisterForm.value)">
+        <div class="field">
+            <label for="brand">Brand:</label><br>
+            <input class="input" type="text" formControlName="brand">
+        </div>
+        <div class="field">
+            <label for="model">Model:</label><br>
+            <input class="input" type="text" formControlName="model">
+        </div>
+        <div class="field">
+            <label for="location">Location:</label><br>
+            <input class="input" type="text" formControlName="location">
+        </div>
+        <div class="field">
+            <label for="carAge">Car age:</label><br>
+            <input class="input" type="number" formControlName="carAge">
+        </div>
+        <div class="field">
+            <label for="mileage">Mileage:</label><br>
+            <input class="input" type="number" formControlName="mileage">
+        </div>
+        <div class="field">
+            <label for="doors">Doors:</label><br>
+            <input class="input" type="number" formControlName="doors">
+        </div >
+        <div class="field">
+            <button class="button is-dark is-medium mr-6" type="submit">Add car!</button>
+        </div>
+    </form>
+</section>

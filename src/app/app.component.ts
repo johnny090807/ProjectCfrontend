@@ -10,15 +10,14 @@ import { catchError, retry } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = "CrsX test"
 
   constructor(private http: HttpClient){
-    http.get('http://localhost:8080/pageTitles/1', {responseType: 'text'})
-    .pipe(
-      catchError((err)=> {
-        console.log(err);
-        return of('404 not Found');
-      })
-    ).subscribe(pageTitle => this.title = pageTitle);
+    // http.get('http://localhost:8080/api/User', {responseType: 'text'})
+    // .pipe(
+    //   catchError((err)=> {
+    //     console.log(err);
+    //     return of('404 not Found');
+    //   })
+    // ).subscribe(pageTitle => console.log(pageTitle));
   }
 }
