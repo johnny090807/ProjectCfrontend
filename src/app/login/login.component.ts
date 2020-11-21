@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from './login-service.service';
 
 @Component({
@@ -10,8 +11,10 @@ import { LoginService } from './login-service.service';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   errorLabel: string;
+  validateLabel: string;
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService) { }
+              private loginService: LoginService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -23,7 +26,13 @@ export class LoginComponent implements OnInit {
   onSubmit(values){
     if (values.username != "" && values.password != ""){
       this.errorLabel = "";
-      return this.loginService.checkLogin(values.username, values.password);
+      this.validateLabel = ""
+      if (this.loginService.checkLogin(values.username, values.password)){
+        this.validateLabel = "You're logged in!";
+        this.router.navigate(['/Home'])
+      }else{
+        this.errorLabel = "We cannot find your information";
+      }
     }else{
       this.errorLabel = "The information is not correct."     
     }

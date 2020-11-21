@@ -13,6 +13,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UniquePipe } from './Pipes/unique.pipe';
 import { AdminComponent } from './admin/admin.component';
+import { ContactComponent } from './contact/contact.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AdminComponent } from './admin/admin.component';
     AboutComponent,
     RentComponent,
     UniquePipe,
-    AdminComponent
+    AdminComponent,
+    ContactComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

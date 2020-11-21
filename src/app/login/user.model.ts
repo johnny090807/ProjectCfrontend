@@ -1,9 +1,12 @@
 export class User{
-    id:number;
-    firstName:string;
-    lastName:string;
-    userName:string;
-    password:string;
-    dateOfBirth:Date;
-    admin:boolean;
+    constructor(
+        public id: number,
+        public firstName: string,
+        public lastName: string,
+        public userName: string,
+        public password: string,
+        public address: string,
+        public email: string,
+        public admin: boolean,
+    ){}
 }

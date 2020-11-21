@@ -28,7 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              {
+              "input":"node_modules/bulma/css/bulma.css"
+              },
+              {
+              "input": "src/styles.scss"
+              }
             ],
             "scripts": []
           },

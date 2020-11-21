@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../login/login-service.service';
+import { User } from '../login/user.model';
 
 @Component({
   selector: 'app-register',
@@ -8,19 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
-
+  constructor(private formBuilder: FormBuilder,
+              private loginService: LoginService) { }
+              
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      Address: ['', Validators.required],
-      EmailAddress: ['', Validators.required],
+    this.registerForm =this.formBuilder.group({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      userName: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      Address: new FormControl('', [Validators.required]),
+      EmailAddress: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     });
   }
 
   onSubmit(values){
-
+    const userToBeAdded = new User(1,values.firstName, values.lastName,values.userName, values.password, values.address, values.EmailAddress, false);
+    this.loginService.addUser(userToBeAdded);
   }
 }
