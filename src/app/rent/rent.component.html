@@ -1,31 +1,66 @@
 <div class="container">
-    <h1 style="background-color: grey;">Search your occasion! {{oldCars.length}} cars available</h1>
-    <div class="filterBar" style="grid-row-end: '{{cars.length + 3}}';">
+  <h1 style="background-color: grey">
+    Search your occasion! {{ oldCars.length }} cars available
+  </h1>
+  <div class="locationFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
+    <div>
+      <h2 style="background-color: grey; margin-top: 0">Locations</h2>
+      <br />
+      <div *ngFor="let location of locations | unique">
+        <input
+          (click)="filterCarsOnLocation(location)"
+          type="checkbox"
+          value="{{ location }}"
+        />{{ location }}<br />
+      </div>
+    </div>
+  </div>
+
+  <div class="brandFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
+    <div>
+      <h2 style="background-color: grey; margin-top: 0">Brands</h2>
+      <br />
+      <div *ngFor="let brand of brands | unique">
+        <input
+          (click)="filterCarsOnBrand(brand)"
+          type="checkbox"
+          value="{{ brand }}"
+        />{{ brand }}<br />
+      </div>
+    </div>
+  </div>
+
+  <div class="gearboxFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
+    <div>
+      <h2 style="background-color: grey; margin-top: 0">Gearbox Type</h2>
+      <br />
+      <div *ngFor="let gearbox of gearboxes | unique">
+        <input
+          (click)="filterCarsOnGearbox(gearbox)"
+          type="checkbox"
+          value="{{ gearbox }}"
+        />{{ gearbox }}<br />
+      </div>
+    </div>
+  </div>
+
+  <div class="occasionBar" *ngFor="let car of cars">
+    <div class="occasion">
+      <div class="top">
+        <img class="occasionImg" src="{{ car.imageUrl }}" alt="Car" />
         <div>
-            <h2 style="background-color: grey; margin-top: 0;">Locations</h2>
-            <button (click)="uncheckall()" type="button" value="Uncheck all locations">Uncheck all locations</button><br>
-            <div *ngFor = "let location of locations | unique">
-                <input (click)="filterCarsOnLocation(location)" type="checkbox" value="{{location}}">{{location}}<br>
-            </div>
+          <h2 class="title">{{ car.name }}</h2>
+          <p>{{ car.type }}</p>
         </div>
-    </div>
-    <div class="occasionBar" *ngFor="let car of cars">
-        <div class="occasion">
-            <div class="top">
-                <img class="occasionImg" src="{{car.imageUrl}}" alt="Car">
-                <div>
-                    <h2 class="title">{{car.name}}</h2>
-                    <p>{{car.type}}</p>
-                </div>
-                <div>
-                    <h2>€{{car.price}}</h2>
-                </div>
-            </div>
-            <div class="bottom">
-                <p class="beoordeling">{{car.review}} Uitstekend</p>
-                <p class="straatnaam">{{car.address}}</p>
-                <button [routerLink]="['/Rent', car.id]">Reserveer nu</button>
-            </div> 
+        <div>
+          <h2>€{{ car.price }}</h2>
         </div>
+      </div>
+      <div class="bottom">
+        <p class="beoordeling">{{ car.review }} Uitstekend</p>
+        <p class="straatnaam">{{ car.address }}</p>
+        <button [routerLink]="['/Rent', car.id]">Reserveer nu</button>
+      </div>
     </div>
+  </div>
 </div>
