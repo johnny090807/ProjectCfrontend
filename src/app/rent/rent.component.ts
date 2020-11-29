@@ -10,16 +10,22 @@ export class RentComponent implements OnInit {
   public cars:Array<Car>;
   public locations = [];
   public checkedLocations = [];
+  public carsFilteredOnLocation = [];
   public brands = [];
   public checkedBrands = [];
+  public carsFilteredOnBrand = [];
   public gearboxes = [];
   public checkedGearboxes = [];
+  public carsFilteredOnGearbox = [];
   public oldCars = [];
   constructor(private carService: CarService) { }
 
   ngOnInit(): void {
     this.cars = this.carService.returnCars();
     this.oldCars = this.cars;
+    this.carsFilteredOnLocation = this.cars;
+    this.carsFilteredOnBrand = this.cars;
+    this.carsFilteredOnGearbox = this.cars;
     for(let car of this.cars){
       this.locations.push(car.address);
       this.brands.push(car.name);
@@ -27,22 +33,29 @@ export class RentComponent implements OnInit {
     }
   }
 
-  uncheckall(){
+  filterCars() {
+    this.cars = this.oldCars.filter(c => this.carsFilteredOnLocation.includes(c));
+    this.cars = this.cars.filter(c => this.carsFilteredOnBrand.includes(c));
+    this.cars = this.cars.filter(c => this.carsFilteredOnGearbox.includes(c));
+  }
+
+  uncheckall(){ //unUsed right now
     this.cars = this.oldCars;
   }
 
   addCarsOnLocation(){
-    this.cars = [];
+    this.carsFilteredOnLocation = [];
     for(let location of this.checkedLocations){
       for(let car of this.oldCars){
         if(location === car.address){
-          this.cars.push(car);
+          this.carsFilteredOnLocation.push(car);
         }
       }
     }
     if (this.checkedLocations.length == 0){
-      this.cars = this.oldCars;
+      this.carsFilteredOnLocation = this.oldCars;
     }
+    this.filterCars();
 
   }
 
@@ -63,18 +76,18 @@ export class RentComponent implements OnInit {
   }
 
   addCarsOnBrand(){
-      this.cars = [];
+      this.carsFilteredOnBrand = [];
       for(let brand of this.checkedBrands){
         for(let car of this.oldCars){
           if(brand === car.name){
-            this.cars.push(car);
+            this.carsFilteredOnBrand.push(car);
           }
         }
       }
       if (this.checkedBrands.length == 0){
-        this.cars = this.oldCars;
+        this.carsFilteredOnBrand = this.oldCars;
       }
-
+      this.filterCars();
     }
 
   filterCarsOnBrand(checkedBox){
@@ -94,18 +107,18 @@ export class RentComponent implements OnInit {
   }
 
   addCarsOnGearbox(){
-      this.cars = [];
+      this.carsFilteredOnGearbox = [];
       for(let gearbox of this.checkedGearboxes){
         for(let car of this.oldCars){
           if(gearbox === car.type){
-            this.cars.push(car);
+            this.carsFilteredOnGearbox.push(car);
           }
         }
       }
       if (this.checkedGearboxes.length == 0){
-        this.cars = this.oldCars;
+        this.carsFilteredOnGearbox = this.oldCars;
       }
-
+      this.filterCars();
     }
 
   filterCarsOnGearbox(checkedBox){
