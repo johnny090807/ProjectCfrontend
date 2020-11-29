@@ -25,7 +25,11 @@
             <input class="input" type="number" formControlName="doors">
         </div >
         <div class="field">
-            <button class="button is-dark is-medium mr-6" type="submit">Add car!</button>
+          <label for="carPicture">Upload a picture of the car:</label><br>
+          <input type="file" (change)="onFileSelected($event)">
+        </div>
+        <div class="field">
+            <button class="button is-dark is-medium mr-6" type="submit" (click)="onUpload()">Add car!</button>
         </div>
     </form>
 </section>

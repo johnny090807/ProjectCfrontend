@@ -26,7 +26,7 @@ export class RegisterCarComponent implements OnInit {
       doors: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     });
   }
-  
+
   onSubmit(values){
     const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors);
     let body = JSON.stringify(carToBeAdded);
@@ -34,5 +34,23 @@ export class RegisterCarComponent implements OnInit {
     this.http.post('http://localhost:8080/api/addCar', body, {headers, responseType: 'text'})
     .subscribe(message => alert(message),
     error => alert(error.message))
+  }
+
+  selectedFile = null;
+  onFileSelected(event){
+    this.selectedFile = <File>event.target.files[0];
+  }
+
+  onUpload(){
+    const fd = new FormData;
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    //change the url to a location where we wanna store the images
+    this.http.post('http://localhost:8080/api/addCar', fd, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event=>{
+        console.log(event);
+      });
   }
 }
