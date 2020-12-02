@@ -12,6 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class AppComponent {
 
   constructor(private http: HttpClient){
+    localStorage.setItem('serverIp', 'http://localhost:8080')
     // http.get('http://localhost:8080/api/User', {responseType: 'text'})
     // .pipe(
     //   catchError((err)=> {
