@@ -16,11 +16,14 @@ export class LoginService {
   //   {id: 2, firstName: "David", lastName: "Neres", userName:"test", password:"test2", address: "ergens DC.213", email: "Email@gmail.com", admin:false},
   // ]
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router) { 
+                
+              }
 
   checkLogin(username, password){
+    let IpLink = localStorage.getItem('serverIp');
     var user;
-    this.http.get('http://localhost:8080/api/checkLogin?userName=' + username + '&password=' + password, {responseType: 'json'})
+    this.http.get(IpLink + '/api/checkLogin?userName=' + username + '&password=' + password, {responseType: 'json'})
     .subscribe((response) => {
       user = new User(
         response['firstName'],
@@ -42,8 +45,9 @@ export class LoginService {
   }
   
   addUser(User: User){
+    let IpLink = localStorage.getItem('serverIp');
     let body = JSON.stringify(User);
     let headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:8080/api/addUser/', body, {headers, responseType: 'text'})
+    return this.http.post(IpLink + '/api/addUser/', body, {headers, responseType: 'text'})
   }
 }

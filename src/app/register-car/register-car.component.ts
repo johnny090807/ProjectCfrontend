@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CarClass } from './carClass.model';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { LoginService } from '../login/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-car',
@@ -14,7 +16,15 @@ export class RegisterCarComponent implements OnInit {
   public CarRegisterForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private LoginService: LoginService,
+              private router: Router) {
+                // if (this.LoginService.loggedInUser == null)
+                // {
+                //   alert('You need to be logged in to view this page.')
+                //   this.router.navigate(['/Login']);
+                // }
+              }
 
   ngOnInit(): void {
     this.CarRegisterForm = this.formBuilder.group({
@@ -27,14 +37,20 @@ export class RegisterCarComponent implements OnInit {
     });
   }
 
-  // onSubmit(values){
-  //   const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors);
-  //   let body = JSON.stringify(carToBeAdded);
-  //   let headers = new HttpHeaders({'Content-Type': 'application/json'});
-  //   this.http.post('http://localhost:8080/api/addCar', body, {headers, responseType: 'text'})
-  //   .subscribe(message => alert(message),
-  //   error => alert(error.message))
-  // }
+  onSubmit(values){
+    const pic = new FormData();
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    pic.append("MyFile", this.selectedFile, this.selectedFile.name);
+    const IpLink = localStorage.getItem('serverIp');
+    this.http.post(IpLink + '/api/addImage', pic)
+    .subscribe(res => {
+      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res['id']);
+      let body = JSON.stringify(carToBeAdded);
+      this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
+      .subscribe(message => alert(message),
+      error => alert(error.message))
+    })
+  }
 
   // selectedFile = null;
   // onFileSelected(event){
