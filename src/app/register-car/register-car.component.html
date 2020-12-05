@@ -26,10 +26,14 @@
         </div >
         <div class="field">
           <label for="carPicture">Upload a picture of the car:</label><br>
-          <input type="file" (change)="onFileSelected($event)">
+          <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
+          <button class="button is-dark is-medium mr-6" (click)="selectFile.click()">Select File</button>
         </div>
+        <div *ngIf="imagePreview != null" class="image-preview" >
+            <img [src]="imagePreview" >
+          </div>
         <div class="field">
-            <button class="button is-dark is-medium mr-6" type="submit" (click)="onUpload()">Add car!</button>
+            <button class="button is-dark is-medium mr-6" type="submit" (click)="OnUploadFile()">Add car!</button>
         </div>
     </form>
 </section>
