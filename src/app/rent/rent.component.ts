@@ -7,7 +7,7 @@ import { CarService } from './car.service';
   styleUrls: ['./rent.component.scss']
 })
 export class RentComponent implements OnInit {
-  public cars:Array<Car>;
+  public cars: Array<Car>;
   public locations = [];
   public checkedLocations = [];
   public carsFilteredOnLocation = [];
@@ -17,6 +17,8 @@ export class RentComponent implements OnInit {
   public gearboxes = [];
   public checkedGearboxes = [];
   public carsFilteredOnGearbox = [];
+  public prices = [];
+  public carsFilteredOnPrice = [];
   public oldCars = [];
   constructor(private carService: CarService) { }
 
@@ -26,10 +28,12 @@ export class RentComponent implements OnInit {
     this.carsFilteredOnLocation = this.cars;
     this.carsFilteredOnBrand = this.cars;
     this.carsFilteredOnGearbox = this.cars;
-    for(let car of this.cars){
+    this.carsFilteredOnPrice = this.cars
+    for (let car of this.cars) {
       this.locations.push(car.address);
       this.brands.push(car.name);
       this.gearboxes.push(car.type);
+      this.prices.push(car.price);
     }
   }
 
@@ -37,104 +41,129 @@ export class RentComponent implements OnInit {
     this.cars = this.oldCars.filter(c => this.carsFilteredOnLocation.includes(c));
     this.cars = this.cars.filter(c => this.carsFilteredOnBrand.includes(c));
     this.cars = this.cars.filter(c => this.carsFilteredOnGearbox.includes(c));
+    this.cars = this.cars.filter(c => this.carsFilteredOnPrice.includes(c));
   }
 
-  uncheckall(){ //unUsed right now
+  uncheckall() { //unUsed right now
     this.cars = this.oldCars;
   }
 
-  addCarsOnLocation(){
+  addCarsOnLocation() {
     this.carsFilteredOnLocation = [];
-    for(let location of this.checkedLocations){
-      for(let car of this.oldCars){
-        if(location === car.address){
+    for (let location of this.checkedLocations) {
+      for (let car of this.oldCars) {
+        if (location === car.address) {
           this.carsFilteredOnLocation.push(car);
         }
       }
     }
-    if (this.checkedLocations.length == 0){
+    if (this.checkedLocations.length == 0) {
       this.carsFilteredOnLocation = this.oldCars;
     }
     this.filterCars();
 
   }
 
-  filterCarsOnLocation(checkedBox){
+  filterCarsOnLocation(checkedBox) {
     let check = false;
     let i = 0;
-    for(let location of this.checkedLocations){
-      if(checkedBox === location){
+    for (let location of this.checkedLocations) {
+      if (checkedBox === location) {
         check = true;
         this.checkedLocations.splice(i, 1);
       }
       i++;
     }
-    if (check === false){
+    if (check === false) {
       this.checkedLocations.push(checkedBox);
     }
     this.addCarsOnLocation();
   }
 
-  addCarsOnBrand(){
-      this.carsFilteredOnBrand = [];
-      for(let brand of this.checkedBrands){
-        for(let car of this.oldCars){
-          if(brand === car.name){
-            this.carsFilteredOnBrand.push(car);
-          }
+  addCarsOnBrand() {
+    this.carsFilteredOnBrand = [];
+    for (let brand of this.checkedBrands) {
+      for (let car of this.oldCars) {
+        if (brand === car.name) {
+          this.carsFilteredOnBrand.push(car);
         }
       }
-      if (this.checkedBrands.length == 0){
-        this.carsFilteredOnBrand = this.oldCars;
-      }
-      this.filterCars();
     }
+    if (this.checkedBrands.length == 0) {
+      this.carsFilteredOnBrand = this.oldCars;
+    }
+    this.filterCars();
+  }
 
-  filterCarsOnBrand(checkedBox){
+  filterCarsOnBrand(checkedBox) {
     let check = false;
     let i = 0;
-    for(let brand of this.checkedBrands){
-      if(checkedBox === brand){
+    for (let brand of this.checkedBrands) {
+      if (checkedBox === brand) {
         check = true;
         this.checkedBrands.splice(i, 1);
       }
       i++;
     }
-    if (check === false){
+    if (check === false) {
       this.checkedBrands.push(checkedBox);
     }
     this.addCarsOnBrand();
   }
 
-  addCarsOnGearbox(){
-      this.carsFilteredOnGearbox = [];
-      for(let gearbox of this.checkedGearboxes){
-        for(let car of this.oldCars){
-          if(gearbox === car.type){
-            this.carsFilteredOnGearbox.push(car);
-          }
+  addCarsOnGearbox() {
+    this.carsFilteredOnGearbox = [];
+    for (let gearbox of this.checkedGearboxes) {
+      for (let car of this.oldCars) {
+        if (gearbox === car.type) {
+          this.carsFilteredOnGearbox.push(car);
         }
       }
-      if (this.checkedGearboxes.length == 0){
-        this.carsFilteredOnGearbox = this.oldCars;
-      }
-      this.filterCars();
     }
+    if (this.checkedGearboxes.length == 0) {
+      this.carsFilteredOnGearbox = this.oldCars;
+    }
+    this.filterCars();
+  }
 
-  filterCarsOnGearbox(checkedBox){
+  filterCarsOnGearbox(checkedBox) {
     let check = false;
     let i = 0;
-    for(let gearbox of this.checkedGearboxes){
-      if(checkedBox === gearbox){
+    for (let gearbox of this.checkedGearboxes) {
+      if (checkedBox === gearbox) {
         check = true;
         this.checkedGearboxes.splice(i, 1);
       }
       i++;
     }
-    if (check === false){
+    if (check === false) {
       this.checkedGearboxes.push(checkedBox);
     }
     this.addCarsOnGearbox();
+  }
+
+  addCarsOnPrice(min, max) {
+    this.carsFilteredOnPrice = [];
+    for (let car of this.oldCars) {
+      if (min <= car.price && max >= car.price) {
+        this.carsFilteredOnPrice.push(car);
+      }
+    }
+
+    if (!min && !max) {
+      this.carsFilteredOnPrice = this.oldCars;
+    }
+    this.filterCars();
+  }
+
+  filterCarsOnPrice() {
+    let min = <HTMLInputElement>document.querySelector("#minPrice");
+    let max = <HTMLInputElement>document.querySelector("#maxPrice");
+    this.addCarsOnPrice(min.value, max.value);
+  }
+
+  clearPrice() {
+    this.addCarsOnPrice(null, null);
   }
 
 }

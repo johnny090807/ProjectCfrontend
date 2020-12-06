@@ -1,3 +1,13 @@
+<script>
+  const button = document.querySelector("button")
+  const input = document.querySelector("#minPrice")  
+  
+  button.addEventListener("click", () => {
+    const { value } = input
+    console.log(value)
+  })
+</script>
+
 <div class="container">
   <h1 style="background-color: grey">
     Search your occasion! {{ oldCars.length }} cars available
@@ -41,6 +51,23 @@
           value="{{ gearbox }}"
         />{{ gearbox }}<br />
       </div>
+    </div>
+  </div>
+
+  <div class="priceFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
+    <div>
+      <h2 style="background-color: grey; margin-top: 0">Price Filter</h2>
+      <br />
+      <form>
+        <input type="text" id="minPrice" name="minPrice">
+        <label for="minPrice">From $</label>
+        <br><br>
+        <input type="text" id="maxPrice" name="maxPrice">
+        <label for="maxPrice">To $:</label>
+        <br><br>
+        <button (click)="filterCarsOnPrice()">Search</button>
+        <button (click)="clearPrice()">Clear</button>
+      </form> 
     </div>
   </div>
 

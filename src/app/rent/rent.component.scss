@@ -77,6 +77,26 @@ $BackgroundColor: grey;
     }
   }
 
+  .priceFilter {
+    grid-column: 2;
+    grid-row-start: 5;
+    font-size: 20px;
+    div {
+      background-color: $BackgroundColor;
+      input {
+        margin: 5px;
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+  @media screen and (max-width: 2080px) {
+    .priceFilter {
+      grid-column-start: 2;
+      grid-column-end: 4;
+    }
+  }
+
   .occasionBar {
     display: grid;
     grid-column: 3;
