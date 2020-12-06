@@ -99,8 +99,9 @@ export class RegisterCarComponent implements OnInit {
     }
     OnUploadFile() {
     //Upload file here send a binary data
-      this.http.post('yourdomain.com/file-upload', this.selectedFile)
-      .subscribe(...);
+      this.http.post('api/file-upload', this.selectedFile)
+      .subscribe(message => alert(message),
+      error => alert(error.message));
     }
   }
 
