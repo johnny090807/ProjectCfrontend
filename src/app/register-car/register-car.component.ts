@@ -18,7 +18,7 @@ export class RegisterCarComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient,
               private LoginService: LoginService,
-              private router: Router) { 
+              private router: Router) {
                 // if (this.LoginService.loggedInUser == null)
                 // {
                 //   alert('You need to be logged in to view this page.')
@@ -53,21 +53,82 @@ export class RegisterCarComponent implements OnInit {
     }), error => alert(error.message)
   }
 
-  selectedFile = null;
-  onFileSelected(event){
-    this.selectedFile = <File>event.target.files[0];
+  // selectedFile = null;
+  // onFileSelected(event){
+  //   this.selectedFile = <File>event.target.files[0];
+  // }
+
+  // onUpload(){
+  //   const fd = new FormData;
+  //   fd.append('image', this.selectedFile, this.selectedFile.name);
+  //   //change the url to a location where we wanna store the images
+  //   this.http.post('http://localhost:8080/api/addCar', fd, {
+  //     reportProgress: true,
+  //     observe: 'events'
+  //   })
+  //     .subscribe(event=>{
+  //       console.log(event);
+  //     });
+  // }
+    // url;
+    // msg = "";
+    // onFileUpload(event){
+    //   if(!event.target.files[0] || event.target.files[0].length == 0) {
+    //     this.msg = 'You must select an image';
+    //     return;
+    //   }
+
+    //   var mimeType = event.target.files[0].type;
+
+    //   if (mimeType.match(/image\/*/) == null) {
+    //     this.msg = "Only images are supported";
+    //     return;
+    //   }
+
+    //   const imageToUpload = event.target.files[0];
+
+    // }
+    selectedFile;
+    imagePreview;
+    onFileUpload(event){
+      this.selectedFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+      this.imagePreview = reader.result;
+      };
+    reader.readAsDataURL(this.selectedFile);
+    }
+    OnUploadFile() {
+    //Upload file here send a binary data
+      this.http.post('api/file-upload', this.selectedFile)
+      .subscribe(message => alert(message),
+      error => alert(error.message));
+    }
   }
 
-  onUpload(){
-    const fd = new FormData;
-    fd.append('image', this.selectedFile);
-    //change the url to a location where we wanna store the images
-    // this.http.post('http://localhost:8080/api/addCar', fd, {
-    //   reportProgress: true,
-    //   observe: 'events'
-    // })
-      // .subscribe(event=>{
-      //   console.log(event);
-      // });
-  }
-}
+    // url;
+    // msg = "";
+
+    // selectFile(event) {
+    //   let imageToUpload = null;
+
+    //   if(!event.target.files[0] || event.target.files[0].length == 0) {
+    //     this.msg = 'You must select an image';
+    //     return;
+    //   }
+
+    //   var mimeType = event.target.files[0].type;
+
+    //   if (mimeType.match(/image\/*/) == null) {
+    //     this.msg = "Only images are supported";
+    //     return;
+    //   }
+
+      // var reader = new FileReader();
+      // reader.readAsDataURL(event.target.files[0]);
+
+      // reader.onload = (_event) => {
+      //   this.msg = "";
+      //   this.url = reader.result;
+
+    //   }
