@@ -1,0 +1,36 @@
+.container{
+    color:white;
+    width: 100%;
+    background-color: grey;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    .middle{
+        .carImage{
+            margin-top: 10px;
+        }
+        display: grid;
+        grid-template-columns: 20% 50% 30%;
+        gap: 25px;
+        .Information{
+            display: grid;
+        }
+        .Price{
+            margin-top: 10px;
+            font-size: 25px;
+        }
+        .location-tab{
+            &-left{
+                grid-row: 2;
+                grid-column: 1/2;
+            }
+            &-right{
+                grid-row: 2;
+                grid-column: 3;
+            }
+        }
+        .confirmation-tab{
+            grid-row: 3;
+            grid-column: 3;
+        }
+    }
+}

@@ -39,17 +39,18 @@ export class RegisterCarComponent implements OnInit {
 
   onSubmit(values){
     const pic = new FormData();
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
     pic.append("MyFile", this.selectedFile, this.selectedFile.name);
+    let headers = new HttpHeaders({'Content-Type': 'multipart/form-data'});
     const IpLink = localStorage.getItem('serverIp');
-    this.http.post(IpLink + '/api/addImage', pic)
+    this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
     .subscribe(res => {
-      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res['id']);
-      let body = JSON.stringify(carToBeAdded);
-      this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
-      .subscribe(message => alert(message),
-      error => alert(error.message))
-    })
+      console.log(res);
+      // const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res['id']);
+      // let body = JSON.stringify(carToBeAdded);
+      // this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
+      // .subscribe(message => alert(message),
+      // error => alert(error.message))
+    }), error => alert(error.message)
   }
 
   selectedFile = null;

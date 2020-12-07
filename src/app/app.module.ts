@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
+import { CarReservationComponent } from './car-reservation/car-reservation.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RegisterCarComponent } from './register-car/register-car.component';
     AdminComponent,
     ContactComponent,
     FooterComponent,
-    RegisterCarComponent
+    RegisterCarComponent,
+    CarReservationComponent
   ],
   imports: [
     BrowserModule,
