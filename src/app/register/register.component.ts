@@ -25,7 +25,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(values){
-    const userToBeAdded = new User(1,values.firstName, values.lastName,values.userName, values.password, values.address, values.EmailAddress, false);
-    this.loginService.addUser(userToBeAdded);
+    const userToBeAdded = new User(values.firstName, values.lastName,values.userName, values.password, values.Address, values.EmailAddress);
+    this.loginService.addUser(userToBeAdded)
+    .subscribe((response) => {
+      alert(response)
+    },
+    (error) => {
+      alert(error)
+    }) 
   }
 }

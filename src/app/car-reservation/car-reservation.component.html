@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="left">
+
+    </div>
+    <div class="middle">
+        <div class="carImage">
+            <img src="{{this.car.imageUrl}}" alt="">
+        </div>
+        <div class="Information">
+            <p>{{this.car.name}}</p>
+            <p>{{this.car.type}}</p>
+            <p>{{this.car.review}}</p>
+        </div>
+        <div class="Price">
+            <p>Vanaf: €{{this.car.price}} p/m</p>
+        </div>
+        
+        <div class="confirmation-tab">
+            <div>
+                <button>Reserveer</button>
+                <button routerLink="/Rent">Cancel</button>
+            </div>
+        </div>
+        <div class="location-tab-left">
+            <div>
+                <h1>Google location HERE!</h1>
+            </div>
+        </div>
+        <div class="location-tab-right">
+            <div>
+                <h1>{{this.car.address}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+
+
+<!-- <h1>{{this.car.name}}</h1>
+<h1>{{this.car.type}}</h1>
+<h1>{{this.car.price}}</h1>
+<h1>{{this.car.review}}</h1>
+<h1>{{this.car.adress}}</h1>
+<h1>{{this.car.imageUrl}}</h1> -->
