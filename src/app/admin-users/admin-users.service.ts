@@ -6,7 +6,7 @@ import { User } from '../login/user.model';
   providedIn: 'root'
 })
 export class AdminUsersService {
-  public Users: Array<User>;
+  public Users: Array<User> = [];
 
   constructor() { }
 

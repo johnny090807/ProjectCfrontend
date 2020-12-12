@@ -14,8 +14,9 @@ import { AdminUsersService } from './admin-users.service';
 })
 
 export class AdminUsersComponent implements OnInit {
+  public users: Array<User>;
+  public user: User;
   constructor(
-    //public users: Array<User>,
     private http: HttpClient,
     private router: Router,
     private adminUsersService: AdminUsersService
@@ -23,7 +24,7 @@ export class AdminUsersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.users = this.adminUsersService.returnUsers();
+    this.users = this.adminUsersService.returnUsers();
   }
 
 
@@ -32,8 +33,11 @@ export class AdminUsersComponent implements OnInit {
     this.http.get(IpLink + '/api/getUsers', { responseType: 'json' })
       .subscribe((response) => {
 
-        //this.users = response;
-        //console.log(users);
+        for (let i = 0; i < Object.keys(response).length; i++) {
+          this.user = response[i];
+          this.users.push(this.user);
+        }
+
       });
   }
 

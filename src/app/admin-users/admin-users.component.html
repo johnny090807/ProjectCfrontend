@@ -7,26 +7,8 @@
 </head>
 <body>
   <h1><button (click)="getUsers()">GET USERS</button></h1>
-<div *ngFor="let user of users">
-  <script>console.log("BITCH")</script>
-  <h2>{{user.firstName}}</h2>
-    <!-- <div class="occasion">
-      <div class="top">
-        <img class="occasionImg" src="{{ car.imageUrl }}" alt="Car" />
-        <div>
-          <h2 class="title">{{ car.name }}</h2>
-          <p>{{ car.type }}</p>
-        </div>
-        <div>
-          <h2>€{{ car.price }}</h2>
-        </div>
-      </div>
-      <div class="bottom">
-        <p class="beoordeling">{{ car.review }} Uitstekend</p>
-        <p class="straatnaam">{{ car.address }}</p>
-        <button [routerLink]="['/Rent', car.id]">Reserveer nu</button>
-      </div>
-    </div> -->
+<div *ngFor="let user of this.users">
+  <h2>{{user.firstName}} {{user.lastName}}</h2>
   </div>
 </body>
 </html>
