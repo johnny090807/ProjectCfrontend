@@ -99,12 +99,12 @@ export class RegisterCarComponent implements OnInit {
       };
     reader.readAsDataURL(this.selectedFile);
     }
-    OnUploadFile() {
-    //Upload file here send a binary data
-      this.http.post('api/file-upload', this.selectedFile)
-      .subscribe(message => alert(message),
-      error => alert(error.message));
-    }
+    // OnUploadFile() {
+    // //Upload file here send a binary data
+    //   this.http.post('api/file-upload', this.selectedFile)
+    //   .subscribe(message => alert(message),
+    //   error => alert(error.message));
+    // }
   }
 
     // url;
