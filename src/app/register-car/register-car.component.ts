@@ -45,11 +45,12 @@ export class RegisterCarComponent implements OnInit {
     this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
     .subscribe(res => {
       console.log(res);
-      // const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res['id']);
-      // let body = JSON.stringify(carToBeAdded);
-      // this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
-      // .subscribe(message => alert(message),
-      // error => alert(error.message))
+      headers = new HttpHeaders({'Content-Type': 'application/json'});
+      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res);
+      let body = JSON.stringify(carToBeAdded);
+      this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
+      .subscribe(message => alert(message),
+      error => alert(error.message))
     }), error => alert(error.message)
   }
 
@@ -98,12 +99,12 @@ export class RegisterCarComponent implements OnInit {
       };
     reader.readAsDataURL(this.selectedFile);
     }
-    OnUploadFile() {
-    //Upload file here send a binary data
-      this.http.post('api/file-upload', this.selectedFile)
-      .subscribe(message => alert(message),
-      error => alert(error.message));
-    }
+    // OnUploadFile() {
+    // //Upload file here send a binary data
+    //   this.http.post('api/file-upload', this.selectedFile)
+    //   .subscribe(message => alert(message),
+    //   error => alert(error.message));
+    // }
   }
 
     // url;
