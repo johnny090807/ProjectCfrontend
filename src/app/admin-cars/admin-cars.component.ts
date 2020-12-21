@@ -1,9 +1,11 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from '../login/user.model';
+import { CarClass } from '../register-car/carClass.model';
+import { CarService } from '../rent/car.service';
 import { ignoreElements, catchError, retry } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-admin-cars',
   templateUrl: './admin-cars.component.html',
@@ -11,14 +13,17 @@ import { Router } from '@angular/router';
 })
 
 export class AdminCarsComponent implements OnInit {
-
-  constructor(private http: HttpClient,
-    private router: Router) {
-
-  }
+  public cars: Array<CarClass>;
+  public car: CarClass;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private carService: CarService
+  ) { }
 
 
   ngOnInit(): void {
+    this.cars = [];
   }
 
 
@@ -27,16 +32,12 @@ export class AdminCarsComponent implements OnInit {
     this.http.get(IpLink + '/api/getCars', { responseType: 'json' })
       .subscribe((response) => {
 
-        var cars = response;
-        // user = new User(
-        //   response['firstName'],
-        //   response['lastName'],
-        //   response['userName'],
-        //   response['password'],
-        //   response['address'],
-        //   response['email'],
-        //   response['id']
-        console.log(cars);
+        for (let i = 0; i < Object.keys(response).length; i++) {
+          this.car = response[i];
+          this.cars.push(this.car);
+        }
+
+        console.log(this.cars);
       });
   }
 

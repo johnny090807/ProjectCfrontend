@@ -6,7 +6,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AdminUsersService } from './admin-users.service';
 
-
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
