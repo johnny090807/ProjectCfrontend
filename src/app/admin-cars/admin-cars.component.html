@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1><button (click)="getCars()">GET CARS</button></h1>
+
+  <div *ngFor="let car of this.cars">
+    <div class="car">
+      <h2>{{car.carAge}} {{car.brand}} {{car.model}}</h2>
+    </div>
+    <br>
+  </div>
+  <h1><button routerLink="../CarRegister">ADD CAR</button></h1>
+  <!-- ../CarRegister.... waarom werkt dat zo??!?!?! XD -->
+
+</body>
+</html>

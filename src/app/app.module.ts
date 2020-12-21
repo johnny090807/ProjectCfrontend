@@ -15,6 +15,10 @@ import { UniquePipe } from './Pipes/unique.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { RegisterCarComponent } from './register-car/register-car.component';
+import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminCarsComponent } from './admin-cars/admin-cars.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { FooterComponent } from './footer/footer.component';
     UniquePipe,
     AdminComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterCarComponent,
+    CarReservationComponent,
+    AdminUsersComponent,
+    AdminCarsComponent
   ],
   imports: [
     BrowserModule,

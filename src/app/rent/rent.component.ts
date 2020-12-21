@@ -157,8 +157,8 @@ export class RentComponent implements OnInit {
   }
 
   filterCarsOnPrice() {
-    let min = <HTMLInputElement>document.querySelector("#minPrice");
-    let max = <HTMLInputElement>document.querySelector("#maxPrice");
+    let min = document.querySelector<HTMLInputElement>("#minPrice");
+    let max = document.querySelector<HTMLInputElement>("#maxPrice");
     this.addCarsOnPrice(min.value, max.value);
   }
 
