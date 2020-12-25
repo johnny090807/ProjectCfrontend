@@ -41,4 +41,14 @@ export class AdminCarsComponent implements OnInit {
       });
   }
 
+  getCar(id) {
+    let IpLink = localStorage.getItem('serverIp');
+    this.http.get(IpLink + '/api/getCarById?Id=' + id, { responseType: 'json' })
+      .subscribe((response) => {
+        this.cars = [];
+        this.cars.push(response[0]);
+        console.log(this.cars);
+      });
+  }
+
 }
