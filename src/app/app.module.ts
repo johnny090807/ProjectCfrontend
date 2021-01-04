@@ -17,6 +17,8 @@ import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
 import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminCarsComponent } from './admin-cars/admin-cars.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CarReservationComponent } from './car-reservation/car-reservation.compo
     ContactComponent,
     FooterComponent,
     RegisterCarComponent,
-    CarReservationComponent
+    CarReservationComponent,
+    AdminUsersComponent,
+    AdminCarsComponent
   ],
   imports: [
     BrowserModule,

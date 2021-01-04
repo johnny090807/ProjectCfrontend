@@ -16,15 +16,15 @@ export class RegisterCarComponent implements OnInit {
   public CarRegisterForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient,
-              private LoginService: LoginService,
-              private router: Router) {
-                // if (this.LoginService.loggedInUser == null)
-                // {
-                //   alert('You need to be logged in to view this page.')
-                //   this.router.navigate(['/Login']);
-                // }
-              }
+    private http: HttpClient,
+    private LoginService: LoginService,
+    private router: Router) {
+    // if (this.LoginService.loggedInUser == null)
+    // {
+    //   alert('You need to be logged in to view this page.')
+    //   this.router.navigate(['/Login']);
+    // }
+  }
 
   ngOnInit(): void {
     this.CarRegisterForm = this.formBuilder.group({
@@ -37,11 +37,12 @@ export class RegisterCarComponent implements OnInit {
     });
   }
 
-  onSubmit(values){
+  onSubmit(values) {
     const pic = new FormData();
     pic.append("MyFile", this.selectedFile, this.selectedFile.name);
-    let headers = new HttpHeaders({'Content-Type': 'multipart/form-data'});
+    let headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
     const IpLink = localStorage.getItem('serverIp');
+
     this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
     .subscribe(res => {
       console.log(res);
@@ -55,6 +56,7 @@ export class RegisterCarComponent implements OnInit {
       },
       error => alert(error.message))
     }), error => alert(error.message)
+
   }
 
   // selectedFile = null;
@@ -74,32 +76,32 @@ export class RegisterCarComponent implements OnInit {
   //       console.log(event);
   //     });
   // }
-    // url;
-    // msg = "";
-    // onFileUpload(event){
-    //   if(!event.target.files[0] || event.target.files[0].length == 0) {
-    //     this.msg = 'You must select an image';
-    //     return;
-    //   }
+  // url;
+  // msg = "";
+  // onFileUpload(event){
+  //   if(!event.target.files[0] || event.target.files[0].length == 0) {
+  //     this.msg = 'You must select an image';
+  //     return;
+  //   }
 
-    //   var mimeType = event.target.files[0].type;
+  //   var mimeType = event.target.files[0].type;
 
-    //   if (mimeType.match(/image\/*/) == null) {
-    //     this.msg = "Only images are supported";
-    //     return;
-    //   }
+  //   if (mimeType.match(/image\/*/) == null) {
+  //     this.msg = "Only images are supported";
+  //     return;
+  //   }
 
-    //   const imageToUpload = event.target.files[0];
+  //   const imageToUpload = event.target.files[0];
 
-    // }
-    selectedFile;
-    imagePreview;
-    onFileUpload(event){
-      this.selectedFile = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
+  // }
+  selectedFile;
+  imagePreview;
+  onFileUpload(event) {
+    this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
       this.imagePreview = reader.result;
-      };
+    };
     reader.readAsDataURL(this.selectedFile);
     }
     // OnUploadFile() {
@@ -108,7 +110,15 @@ export class RegisterCarComponent implements OnInit {
     //   .subscribe(message => alert(message),
     //   error => alert(error.message));
     // }
+
   }
+  // OnUploadFile() {
+  // //Upload file here send a binary data
+  //   this.http.post('api/file-upload', this.selectedFile)
+  //   .subscribe(message => alert(message),
+  //   error => alert(error.message));
+  // }
+}
 
     // url;
     // msg = "";

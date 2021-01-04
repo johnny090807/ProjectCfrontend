@@ -22,6 +22,7 @@ import { catchError, retry } from 'rxjs/operators';
         <a class="navbar-item" routerLink="Home">Home</a>
         <a class="navbar-item" routerLink="Contact">Contact</a>
         <a class="navbar-item" routerLink="Rent">Rent</a>
+        <a class="navbar-item" routerLink="Admin">Admin</a>
       </div>
       <div *ngIf="this.loggedIn() == null" class="navbar-end">
         <a class="navbar-item" routerLink="Login">Login</a>
@@ -39,10 +40,10 @@ import { catchError, retry } from 'rxjs/operators';
   ]
 })
 export class HeaderComponent implements OnInit {
-  loggedInUser : User;
+  loggedInUser: User;
   title = "Crsx";
   constructor(public loginService: LoginService,
-              private http: HttpClient) { }
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     // this.http.get('http://localhost:8080/pageTitles/1', {responseType: 'text'})
@@ -53,17 +54,17 @@ export class HeaderComponent implements OnInit {
     //   })
     // ).subscribe(pageTitle => this.title = pageTitle);
   }
-  public loggedIn(){
+  public loggedIn() {
     this.loggedInUser = this.loginService.loggedInUser;
     return this.loginService.loggedInUser;
   }
-  public Logout(){
+  public Logout() {
     var res = confirm("Do you really want to logout?");
-    if(res){
+    if (res) {
       this.loggedInUser = null;
       this.loginService.loggedInUser = null;
     }
   }
-  
+
 }
 
