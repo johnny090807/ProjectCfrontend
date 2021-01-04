@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
+import { CarService } from './rent/car.service';
 
 
 @Component({
@@ -14,16 +15,16 @@ import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/templa
 export class AppComponent {
   image: SafeUrl;
   constructor(private http: HttpClient,
+              private carService: CarService,
               private sanitizer: DomSanitizer){
                 localStorage.setItem('serverIp', 'http://localhost:8080')
                 this.getImage()
               }
-
    getImage(){
     let headers = new HttpHeaders({'Content-Type': 'image/png',
                                   'Accept' : 'image/png'});
     let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getImageByPath?path=car1.png', {headers, observe : 'response', responseType: 'text'})
+    this.http.get(IpLink + '/api/getImageByPath?path=car2.png', {headers, observe : 'response', responseType: 'text'})
     .subscribe((response) => {
       console.log(response)
       console.log(response.headers.get('Content-Type'))

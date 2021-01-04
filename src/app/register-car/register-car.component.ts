@@ -49,7 +49,10 @@ export class RegisterCarComponent implements OnInit {
       const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res);
       let body = JSON.stringify(carToBeAdded);
       this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
-      .subscribe(message => alert(message),
+      .subscribe(message => {
+        alert(message) 
+        window.location.reload();
+      },
       error => alert(error.message))
     }), error => alert(error.message)
   }
