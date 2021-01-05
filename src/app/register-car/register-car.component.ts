@@ -43,19 +43,19 @@ export class RegisterCarComponent implements OnInit {
     let headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
     const IpLink = localStorage.getItem('serverIp');
 
-    this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
-    .subscribe(res => {
-      console.log(res);
-      headers = new HttpHeaders({'Content-Type': 'application/json'});
-      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res);
-      let body = JSON.stringify(carToBeAdded);
-      this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
-      .subscribe(message => {
-        alert(message) 
-        window.location.reload();
-      },
-      error => alert(error.message))
-    }), error => alert(error.message)
+    this.http.post(IpLink + '/api/addImage', pic, { responseType: 'text' })
+      .subscribe(res => {
+        console.log(res);
+        headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const carToBeAdded = new CarClass(values.brand, values.model, values.location, values.carAge, values.mileage, values.doors, res);
+        let body = JSON.stringify(carToBeAdded);
+        this.http.post(IpLink + '/api/addCar', body, { headers, responseType: 'text' })
+          .subscribe(message => {
+            alert(message)
+            window.location.reload();
+          },
+            error => alert(error.message))
+      }), error => alert(error.message)
 
   }
 
@@ -103,14 +103,6 @@ export class RegisterCarComponent implements OnInit {
       this.imagePreview = reader.result;
     };
     reader.readAsDataURL(this.selectedFile);
-    }
-    // OnUploadFile() {
-    // //Upload file here send a binary data
-    //   this.http.post('api/file-upload', this.selectedFile)
-    //   .subscribe(message => alert(message),
-    //   error => alert(error.message));
-    // }
-
   }
   // OnUploadFile() {
   // //Upload file here send a binary data
@@ -118,7 +110,15 @@ export class RegisterCarComponent implements OnInit {
   //   .subscribe(message => alert(message),
   //   error => alert(error.message));
   // }
+
 }
+  // OnUploadFile() {
+  // //Upload file here send a binary data
+  //   this.http.post('api/file-upload', this.selectedFile)
+  //   .subscribe(message => alert(message),
+  //   error => alert(error.message));
+  // }
+
 
     // url;
     // msg = "";

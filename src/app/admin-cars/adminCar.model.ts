@@ -1,5 +1,6 @@
 export class CarClass {
   constructor(
+    public id: number,
     public brand: string,
     public model: string,
     public location: string,
