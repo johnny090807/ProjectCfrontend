@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Car } from './car.model';
 
@@ -15,9 +16,15 @@ export class CarService {
     {id: 7, type: "Manual", name: "Dikke BMW", price: 40, review: 8.3, address: "Wateringen", imageUrl: "../../assets/car2.png"},
     {id: 8, type: "Automatic", name: "BMW", price: 50, review: 8.3, address: "Voorburg", imageUrl: "../../assets/car2.png"}
   ]
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public returnCars(){
     return this.cars;
+  }
+
+  public getAllCars(){
+    let IpLink = localStorage.getItem('serverIp');
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get(IpLink + '/api/getCars', {headers, responseType: 'json'})
   }
 }
