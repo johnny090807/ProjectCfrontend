@@ -9,6 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
 import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { ResDetailsComponent } from './res-details/res-details.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'About', component: AboutComponent },
   { path: 'Rent', component: RentComponent },
   { path: 'Rent/:id', component: CarReservationComponent },
+  { path: 'Res/:id', component: ResDetailsComponent },
   { path: 'CarRegister', component: RegisterCarComponent },
   { path: '**', component: HomeComponent }
 ];

@@ -19,7 +19,26 @@ export class LoginService {
               private router: Router) { 
                 
               }
-
+  loggedIn(){
+    if(localStorage.getItem('userName') == null && localStorage.getItem('password') == null){
+      return;
+    }
+    let IpLink = localStorage.getItem('serverIp');
+    var user;
+    this.http.get(IpLink + '/api/checkLogin?userName=' + localStorage.getItem('userName') + '&password=' + localStorage.getItem('password'), {responseType: 'json'})
+    .subscribe((response) => {
+      user = new User(
+        response['firstName'],
+        response['lastName'],
+        response['userName'],
+        response['password'],
+        response['address'],
+        response['email'],
+        response['id']
+      );
+      this.loggedInUser = user;
+    })
+  }
   checkLogin(username, password){
     let IpLink = localStorage.getItem('serverIp');
     var user;
@@ -43,7 +62,6 @@ export class LoginService {
       }
     }, error => alert("There was an error handling your response: " + error.message))
   }
-  
   addUser(User: User){
     let IpLink = localStorage.getItem('serverIp');
     let body = JSON.stringify(User);

@@ -62,6 +62,8 @@ export class HeaderComponent implements OnInit {
     if(res){
       this.loggedInUser = null;
       this.loginService.loggedInUser = null;
+      localStorage.removeItem('userName')
+      localStorage.removeItem('password')
     }
   }
   

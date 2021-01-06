@@ -17,6 +17,10 @@ import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
 import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ResDetailsComponent } from './res-details/res-details.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +36,18 @@ import { CarReservationComponent } from './car-reservation/car-reservation.compo
     ContactComponent,
     FooterComponent,
     RegisterCarComponent,
-    CarReservationComponent
+    CarReservationComponent,
+    ResDetailsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

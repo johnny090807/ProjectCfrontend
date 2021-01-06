@@ -12,12 +12,13 @@
             <p>{{this.car.review}}</p>
         </div>
         <div class="Price">
-            <p>Vanaf: €{{this.car.price}} p/m</p>
+            <p>Vanaf: €{{this.car.price}} p/d</p>
         </div>
         
         <div class="confirmation-tab">
             <div>
-                <button>Reserveer</button>
+                <button [routerLink]="['/Res', this.car.id]" *ngIf="this.LoggedIn() != null">Reserveer</button>
+                <button [routerLink]="['/Login']" *ngIf="this.LoggedIn() == null">Login!</button>
                 <button routerLink="/Rent">Cancel</button>
             </div>
         </div>
@@ -36,7 +37,6 @@
 
     </div>
 </div>
-
 
 <!-- <h1>{{this.car.name}}</h1>
 <h1>{{this.car.type}}</h1>

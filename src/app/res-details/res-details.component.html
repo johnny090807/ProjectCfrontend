@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="left">
+
+    </div>
+    <div class="middle">
+        <form [formGroup]="form">            
+            <input type="text" class="input">
+            <mat-date-range-input 
+            [rangePicker]="picker" 
+            [dateFilter]="unavailableDays"
+            formGroupName="dateRange">
+            <input matStartDate placeholder="Start date" formControlName="startDate">
+            <input matEndDate placeholder="End date" formControlName="endDate">
+            </mat-date-range-input>
+            
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker 
+            #picker
+            ></mat-date-range-picker>
+            <button (click)="onSubmit()">Reserveer</button>
+        </form>
+    </div>
+    <div class="right">
+
+    </div>
+</div>
