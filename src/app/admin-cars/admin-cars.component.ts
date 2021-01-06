@@ -76,7 +76,6 @@ export class AdminCarsComponent implements OnInit {
   }
 
   saveCar() {
-
     let carId = Number((<HTMLInputElement>document.getElementById("carId")).value);
     let carBrand = (<HTMLInputElement>document.getElementById("carBrand")).value;
     let carModel = (<HTMLInputElement>document.getElementById("carModel")).value;
@@ -98,6 +97,10 @@ export class AdminCarsComponent implements OnInit {
           window.alert("Changes Saved!");
         });
     }
+  }
+
+  searchCars() {
+
   }
 
   getImage() {

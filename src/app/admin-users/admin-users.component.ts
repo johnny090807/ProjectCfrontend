@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from '../login/user.model';
+import { User } from './adminUser.model';
 import { ignoreElements, catchError, retry } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -61,6 +61,29 @@ export class AdminUsersComponent implements OnInit {
         console.log(this.users);
         this.selection = true;
       });
+  }
+
+  saveUser() {
+    let userId = Number((<HTMLInputElement>document.getElementById("userId")).value);
+    let userFirstName = (<HTMLInputElement>document.getElementById("userFirstName")).value;
+    let userLastName = (<HTMLInputElement>document.getElementById("userLastName")).value;
+    let userUserName = (<HTMLInputElement>document.getElementById("userUserName")).value;
+    let userPassword = ((<HTMLInputElement>document.getElementById("userPassword")).value);
+    let userAddress = ((<HTMLInputElement>document.getElementById("userAddress")).value);
+    let userEmail = ((<HTMLInputElement>document.getElementById("userEmail")).value);
+
+    let user = new User(userId, userFirstName, userLastName, userUserName, userPassword, userAddress, userEmail);
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let body = JSON.stringify(user);
+
+    let IpLink = localStorage.getItem('serverIp');
+
+    if (confirm("Are you sure you?")) {
+      this.http.put(IpLink + '/api/updateUser?id=' + userId, body, { headers, responseType: 'text' })
+        .subscribe((response) => {
+          window.alert("Changes Saved!");
+        });
+    }
   }
 
 }
