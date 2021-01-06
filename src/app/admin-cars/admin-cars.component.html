@@ -6,6 +6,7 @@
   <title>Document</title>
 </head>
 <body>
+  <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getCars()">GET CARS</button></h1>
   <h1><button (click)="[getCar(), getImage()]">GET CAR</button> ID: <input name="id" id="id" type="text"> </h1>
 
@@ -22,7 +23,9 @@
         <h2>Mileage: <input type="number" name="carMileage" id="carMileage" value={{car.mileage}}></h2>
         <h2>doors: <input type="number" name="carDoors" id="carDoors" value={{car.doors}}></h2>
         <h2>image: <input type="text" name="carImage" id="carImage" value={{car.imagePath}}></h2>
+
         <img [src]='image'><br>
+
         <button (click)="saveCar()">Save Changes</button>
         <button (click)="noCar()">Close</button>
       </div>

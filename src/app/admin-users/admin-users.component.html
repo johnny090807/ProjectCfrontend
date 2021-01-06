@@ -6,13 +6,33 @@
   <title>Document</title>
 </head>
 <body>
+  <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getUsers()">GET USERS</button></h1>
+  <h1><button (click)="getUser()">GET USER</button> ID: <input name="id" id="id" type="text"> </h1>
 
-  <div *ngFor="let user of this.users">
-    <div class="user">
-      <h2>{{user.firstName}} {{user.lastName}}</h2>
+  <div *ngIf="selection">
+    <div class="car">
+      <div *ngFor="let user of this.users">
+        <h2>Id: <input type="text" name="carId" id="carId" value={{user.id}}></h2>
+        <h2>firstName: <input type="text" name="carBrand" id="carBrand" value={{user.firstName}}></h2>
+        <h2>lastName: <input type="text" name="carModel" id="carModel" value={{user.lastName}}></h2>
+        <h2>userName: <input type="text" name="carLocation" id="carLocation" value={{user.userName}}></h2>
+        <h2>password: <input type="text" name="carAge" id="carAge" value={{user.password}}></h2>
+        <h2>address: <input type="text" name="carMileage" id="carMileage" value={{user.address}}></h2>
+        <h2>email: <input type="text" name="carDoors" id="carDoors" value={{user.email}}></h2>
+
+        <button (click)="noUser()">Close</button>
+      </div>
     </div>
-    <br>
+  </div>
+
+  <div *ngIf="!selection">
+    <div *ngFor="let user of this.users">
+      <div class="user">
+        <h2>{{user.id}} {{user.firstName}} {{user.lastName}}</h2>
+      </div>
+      <br>
+    </div>
   </div>
 
 </body>
