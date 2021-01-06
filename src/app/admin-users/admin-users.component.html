@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1><button (click)="getUsers()">GET USERS</button></h1>
+
+  <div *ngFor="let user of this.users">
+    <div class="user">
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+    </div>
+    <br>
+  </div>
+
+</body>
+</html>

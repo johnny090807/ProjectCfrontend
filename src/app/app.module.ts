@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ResDetailsComponent } from './res-details/res-details.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminCarsComponent } from './admin-cars/admin-cars.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ResDetailsComponent } from './res-details/res-details.component';
     RegisterCarComponent,
     CarReservationComponent,
     ResDetailsComponent
+    AdminUsersComponent,
+    AdminCarsComponent
   ],
   imports: [
     BrowserModule,
