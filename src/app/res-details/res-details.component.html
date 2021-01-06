@@ -4,7 +4,18 @@
     </div>
     <div class="middle">
         <form [formGroup]="form">            
-            <input type="text" class="input">
+            <label class="checkbox">
+                <input type="checkbox">
+                Kinderstoeltje
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">
+                Remember me
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">
+                Remember me
+            </label>
             <mat-date-range-input 
             [rangePicker]="picker" 
             [dateFilter]="unavailableDays"
