@@ -47,7 +47,6 @@ export class AdminCarsComponent implements OnInit {
           this.cars.push(this.car);
         }
         this.selection = false;
-        console.log(this.cars);
       });
   }
 
@@ -57,13 +56,24 @@ export class AdminCarsComponent implements OnInit {
     this.http.get(IpLink + '/api/getCarById?id=' + id, { responseType: 'text' })
       .subscribe((response) => {
         this.cars = [];
-        console.log(response);
         this.cars.push(JSON.parse(response));
-        console.log(this.cars);
         this.selection = true;
       });
   }
 
+  deleteCar() {
+    let id = (<HTMLInputElement>document.getElementById("id")).value;
+    let IpLink = localStorage.getItem('serverIp');
+    if (confirm("Are you sure you want to delete this car?")) {
+      this.http.delete(IpLink + '/api/deleteCar?id=' + id, { responseType: 'text' })
+        .subscribe((response) => {
+          this.cars = [];
+          this.cars.push(JSON.parse(response));
+          this.selection = true;
+          window.alert("Car Deleted!");
+        });
+    }
+  }
 
   saveCar() {
 
@@ -81,10 +91,13 @@ export class AdminCarsComponent implements OnInit {
     let body = JSON.stringify(car);
 
     let IpLink = localStorage.getItem('serverIp');
-    this.http.put(IpLink + '/api/updateCar?id=' + carId, body, { headers, responseType: 'text' })
-      .subscribe((response) => {
-        console.log(response);
-      });
+
+    if (confirm("Are you sure you?")) {
+      this.http.put(IpLink + '/api/updateCar?id=' + carId, body, { headers, responseType: 'text' })
+        .subscribe((response) => {
+          window.alert("Changes Saved!");
+        });
+    }
   }
 
   getImage() {
@@ -96,8 +109,6 @@ export class AdminCarsComponent implements OnInit {
     let IpLink = localStorage.getItem('serverIp');
     this.http.get(IpLink + '/api/getImageByPath?path=' + img, { headers, observe: 'response', responseType: 'text' })
       .subscribe((response) => {
-        console.log(response)
-        console.log(response.headers.get('Content-Type'))
         let objectURL = 'data:image/png;base64,' + response.body;
         this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       },
