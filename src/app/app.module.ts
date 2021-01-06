@@ -39,7 +39,7 @@ import { AdminCarsComponent } from './admin-cars/admin-cars.component';
     FooterComponent,
     RegisterCarComponent,
     CarReservationComponent,
-    ResDetailsComponent
+    ResDetailsComponent,
     AdminUsersComponent,
     AdminCarsComponent
   ],
