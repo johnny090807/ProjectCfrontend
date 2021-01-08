@@ -70,16 +70,6 @@
       </form> 
     </div>
   </div>
-
-  <div class="occasionBar" *ngFor="let car of cars">
-    <div class="occasion">
-      <div class="top">
-        <img class="occasionImg" src="{{ car.imageUrl }}" alt="Car" />
-        <div>
-          <h2 class="title">{{ car.name }}</h2>
-          <p>{{ car.type }}</p>
-        </div>
-    </div>
     <div class="occasionBar" *ngFor="let car of cars">
         <div class="occasion">
             <div class="top">
@@ -97,15 +87,6 @@
                 <p class="straatnaam">{{car.address}}</p>
                 <button [routerLink]="['/Rent', car.id]">Bekijk nu</button>
             </div> 
-        <div>
-          <h2>€{{ car.price }}</h2>
-        </div>
-      </div>
-      <div class="bottom">
-        <p class="beoordeling">{{ car.review }} Uitstekend</p>
-        <p class="straatnaam">{{ car.address }}</p>
-        <button [routerLink]="['/Rent', car.id]">Reserveer nu</button>
-      </div>
     </div>
   </div>
 </div>

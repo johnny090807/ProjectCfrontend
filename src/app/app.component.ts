@@ -26,8 +26,8 @@ export class AppComponent {
     let IpLink = localStorage.getItem('serverIp');
     this.http.get(IpLink + '/api/getImageByPath?path=car2.png', {headers, observe : 'response', responseType: 'text'})
     .subscribe((response) => {
-      console.log(response)
-      console.log(response.headers.get('Content-Type'))
+      // console.log(response)
+      // console.log(response.headers.get('Content-Type'))
       // this.sanitize(response)
       // btoa(response)
       // let objectURL = URL.createObjectURL(response);       

@@ -8,3 +8,4 @@ export class CarClass {
         public doors: number,
         public imagePath?: string
     ){}
+}
