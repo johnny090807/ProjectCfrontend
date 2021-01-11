@@ -1,65 +1,82 @@
-<section class="hero is-dark is-bold">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
+<section class="hero is-small is-dark is-bold has-text-centered">
   <div class="hero-body">
-  <div class="container">
-
-    <h1 class="title">Register:</h1>
-  </div>
+    <div class="container">
+      <h1 class="title">Register</h1>
+    </div>
   </div>
 </section>
 
 <section class="section">
 <div class="container">
-    <div class="registerForm">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-            <div>
-                <h1 style="color: white;">First Name:</h1>
-                <input type="text" formControlName="firstName" placeholder="First name" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)">
-                    <div *ngIf="registerForm.controls.firstName.errors.required">Fill in your firstname!</div>
-                </div>
-            </div>
-            <div>
-                <h1 style="color: white;">Last name:</h1>
-                <input type="text" formControlName="lastName" placeholder="Last name" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)">
-                    <div *ngIf="registerForm.controls.lastName.errors.required">Fill in your last name!</div>
-                </div>
-            </div>
-            <div>
-                <h1 style="color: white;">Username:</h1>
-                <input type="text" formControlName="userName" placeholder="User name" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched)">
-                    <div *ngIf="registerForm.controls.userName.errors.required">Fill in your username!</div>
-                </div>
-            </div>
-            <div>
-                <h1 style="color: white;">Password:</h1>
-                <input type="password" formControlName="password" placeholder="Password" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
-                    <div *ngIf="registerForm.controls.password.errors.required">Fill in your password!</div>
-                </div>
-            </div>
-            <div>
-                <h1 style="color: white;">Address:</h1>
-                <input type="text" formControlName="Address" placeholder="Address" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched)">
-                    <div *ngIf="registerForm.controls.Address.errors.required">Fill in your address!</div>
-                </div>
-            </div>
-            <div>
-                <h1 style="color: white;">Email:</h1>
-                <input type="email" formControlName="EmailAddress" placeholder="Email address" required>
-                <div class="errorLabel" *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched)">
-                    <div *ngIf="registerForm.controls.EmailAddress.errors.required">This is not a real email address!</div>
-                </div>
-            </div>
-            <div>
-                <input class="registerButton" type="submit" [disabled]="!this.registerForm.valid" value="Register">
-            </div>
-            <div>
-                <input style="cursor: pointer;" type="submit" value="Login" [routerLink]="[ '/Login' ]">
-            </div>
-        </form>
+  <div class="field">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Name</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)}"class="input" type="text" formControlName="firstName" placeholder="e.g Alex" required>
+        </div>
+        <p *ngIf="registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched && registerForm.controls.firstName.errors.required)" class="help is-danger">Please fill in a correct name</p>
+      </div>
+
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Surname</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)}"class="input" type="text" formControlName="lastName" placeholder="e.g Smith" required>
+        </div>
+        <p *ngIf="registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched && registerForm.controls.lastName.errors.required)" class="help is-danger">Please fill in a correct surname</p>
+      </div>
+
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Username</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)}"class="input" type="text" formControlName="userName" placeholder="e.g AlexSmith" required>
+        </div>
+        <p *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)" class="help is-danger">Please fill in a correct username</p>
+      </div>
+
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Password</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)}"class="input" type="password" formControlName="password" placeholder="personal preference" required>
+        </div>
+        <p *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)" class="help is-danger">Please fill in a correct password</p>
+      </div>
+
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Address</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)}"class="input" type="text" formControlName="Address" placeholder="e.g Somestreet 123" required>
+        </div>
+        <p *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)" class="help is-danger">Please fill in a correct Address</p>
+      </div>
+
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Email address</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)}"class="input" type="text" formControlName="EmailAddress" placeholder="e.g alexsmith78@gmail.com" required>
+        </div>
+        <p *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)" class="help is-danger">This is not a correct email address</p>
+      </div>
+      <br>
+      <div class="buttons has-addons is-centered">
+        <br>
+        <button class="button is-white is-outlined" type="submit" [disabled]="!this.registerForm.valid" value="Register">Register</button>
+      </div>
+      <div class="has-text-centered has-text-white">
+        <br> <p>If you already have an account click <a routerLink="/Login">here</a> to log in</p>
+      </div>
+      </form>
     </div>
-</div>
+  </div>
 </section>
+</body>
+</html>

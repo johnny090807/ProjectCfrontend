@@ -29,7 +29,7 @@ import { catchError, retry } from 'rxjs/operators';
         <a class="navbar-item" routerLink="Register">Register</a>
       </div>
       <div *ngIf="this.loggedIn() != null" class="navbar-end">
-      <a class="navbar-item" routerLink="CarRegister">Add car!</a>
+      <a class="navbar-item" routerLink="CarRegister">Add car</a>
         <a class="navbar-item" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
         <a class="navbar-item" (click)="this.Logout()">Logout</a>
       </div>

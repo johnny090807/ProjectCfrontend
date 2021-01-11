@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-contact',
   template: `
-    <section class="hero is-dark is-bold">
+    <section class="hero is-small is-dark is-bold">
     <div class="hero-body">
-    <div class="container">
+    <div class="container has-text-centered">
 
       <h1 class="title">Contact Us</h1>
 
@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
     </div>
     </section>
 
-    <section class="section">
-    <div class="container">
+    <section class="section has-background-dark">
+    <div class="container has-background-dark">
 
       <!-- form goes here -->
       <form (ngSubmit)="submitForm()">
@@ -41,8 +41,7 @@ import { Component, OnInit } from '@angular/core';
     </div>
     </section>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class ContactComponent implements OnInit {
   name: string;
@@ -56,6 +55,6 @@ export class ContactComponent implements OnInit {
 
   submitForm(){
     const allInfo = `My name is ${this.name}. My email is ${this.email}. My message is ${this.message}`;
-    alert(allInfo); 
+    alert(allInfo);
   }
 }

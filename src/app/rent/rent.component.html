@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
 <script>
   const button = document.querySelector("button")
-  const input = document.querySelector("#minPrice")  
-  
+  const input = document.querySelector("#minPrice")
+
   button.addEventListener("click", () => {
     const { value } = input
     console.log(value)
@@ -67,7 +76,7 @@
         <br><br>
         <button (click)="filterCarsOnPrice()">Search</button>
         <button (click)="clearPrice()">Clear</button>
-      </form> 
+      </form>
     </div>
   </div>
     <div class="occasionBar" *ngFor="let car of cars">
@@ -86,7 +95,9 @@
                 <p class="beoordeling">{{car.review}} Uitstekend</p>
                 <p class="straatnaam">{{car.address}}</p>
                 <button [routerLink]="['/Rent', car.id]">Bekijk nu</button>
-            </div> 
+            </div>
     </div>
   </div>
 </div>
+</body>
+</html>
