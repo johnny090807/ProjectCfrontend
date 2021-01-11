@@ -1,8 +1,17 @@
-<section class="hero is-dark is-bold">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
+<section class="hero is-small is-dark is-bold">
   <div class="hero-body">
   <div class="container">
 
-    <h1 class="title">Log-in:</h1>
+    <h1 class="title has-text-centered">Login</h1>
   </div>
   </div>
 </section>
@@ -10,22 +19,26 @@
 <section class="section">
 <div class="loginFormContainer">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" action="*" required>
+      <br><br>
       <div class="field">
-            <input class="input" formControlName="username" type="text" placeholder="Username" required>
-            <div class="errorLabel" *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
-                <div class="errorMessage" *ngIf="loginForm.controls.username.errors.required">Fill in a username!</div>
-            </div>
+        <label class="label" style="color: white;">Username</label>
+            <input class="input" [ngClass]="{'is-danger': loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched && loginForm.controls.username.errors.required)}"  formControlName="username" type="text" placeholder="e.g AlexSmith" required>
+            <p *ngIf="loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched && loginForm.controls.username.errors.required)" class="help is-danger">Please submit your username</p>
       </div>
+      <br>
       <div class="field">
-            <input class="input" formControlName="password" type="password" placeholder="Password" required>
-            <div class="errorLabel" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
-                <div class="errorMessage" *ngIf="loginForm.controls.password.errors.required">Fill in a password!</div>
-            </div>
+        <label class="label" style="color: white;">Password</label>
+            <input class="input" [ngClass]="{'is-danger': loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched && loginForm.controls.password.errors.required)}" formControlName="password" type="password" placeholder="Don't forget!" required>
+            <p *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched && loginForm.controls.password.errors.required)" class="help is-danger">Please submit your password</p>
       </div>
+      <br>
       <div class="field">
-            <div class="buttonDiv">
-                <button type="submit" class="button is-dark is-medium mr-6" value="Login!">Login</button> or
-                <button class="button is-dark is-medium ml-6"  [routerLink]="['/Register']">Register</button>
+            <div class="buttons has-addons is-centered">
+              <br>
+              <button class="button is-white is-outlined" type="submit" [disabled]="!this.loginForm.valid" value="Login">Log in</button>
+            </div>
+            <div class="has-text-centered has-text-white">
+              <br> <p>If you don't have an account click <a routerLink="/Register">here</a> to register</p>
             </div>
             <div class="errorLabel">
                 <div class="errorMessage">{{this.errorLabel}}</div>
@@ -35,3 +48,5 @@
     </form>
 </div>
 </section>
+</body>
+</html>

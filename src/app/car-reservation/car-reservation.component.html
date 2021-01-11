@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
 <div class="container">
     <div class="left">
 
@@ -13,7 +22,7 @@
         <div class="Price">
             <p>Vanaf: €{{this.car.price}} p/d</p>
         </div>
-        
+
         <div class="confirmation-tab">
             <div>
                 <button [routerLink]="['/Res', this.car.id]" *ngIf="this.LoggedIn() != null">Reserveer</button>
@@ -36,6 +45,8 @@
 
     </div>
 </div>
+</body>
+</html>
 
 <!-- <h1>{{this.car.name}}</h1>
 <h1>{{this.car.type}}</h1>

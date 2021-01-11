@@ -1,39 +1,61 @@
-<section class="section">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>addCar</title>
+</head>
+<body>
+  <section class="hero is-small is-dark is-bold has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Register a Car</h1>
+      </div>
+    </div>
+  </section>
+<section class="section has-text-white">
     <form [formGroup]="CarRegisterForm" (ngSubmit)="onSubmit(CarRegisterForm.value)">
+      <section class="container">
         <div class="field">
             <label for="brand">Brand:</label><br>
-            <input class="input" type="text" formControlName="brand">
+            <input class="input" type="text" formControlName="brand" required>
         </div>
         <div class="field">
             <label for="model">Model:</label><br>
-            <input class="input" type="text" formControlName="model">
+            <input class="input" type="text" formControlName="model" required>
         </div>
         <div class="field">
             <label for="location">Location:</label><br>
-            <input class="input" type="text" formControlName="location">
+            <input class="input" type="text" formControlName="location" required>
         </div>
         <div class="field">
             <label for="carAge">Car age:</label><br>
-            <input class="input" type="number" formControlName="carAge">
+            <input class="input" type="number" formControlName="carAge"required>
         </div>
         <div class="field">
             <label for="mileage">Mileage:</label><br>
-            <input class="input" type="number" formControlName="mileage">
+            <input class="input" type="number" formControlName="mileage"required>
         </div>
         <div class="field">
             <label for="doors">Doors:</label><br>
-            <input class="input" type="number" formControlName="doors">
+            <input class="input" type="number" formControlName="doors"required>
         </div>
         <div class="field">
-          <label for="carPicture">Upload a picture of the car:</label><br>
+          <br>
+          <label for="carPicture">Upload a picture of the car:</label><br><br>
           <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
-          <button class="button is-dark is-medium mr-6" (click)="selectFile.click()">Select File</button>
+          <button class="button is-white is-outlined mr-6" [disabled]="!this.CarRegisterForm.valid" (click)="selectFile.click()">Select File</button>
         </div>
         <div *ngIf="imagePreview != null" class="image-preview" >
             <img [src]="imagePreview" >
           </div>
-        <div class="field">
-            <button class="button is-dark is-medium mr-6" type="submit">Add car!</button>
+          <br>
+        <div class="buttons has-addons is-centered">
+            <button class="button is-white is-outlined is-medium mr-6" type="submit">Add car!</button>
         </div>
+        </section>
     </form>
 </section>
+</body>
+</html>
