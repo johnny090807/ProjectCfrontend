@@ -6,6 +6,7 @@ import { LoginService } from '../login/login-service.service';
 import { User } from '../login/user.model';
 import { Car } from '../rent/car.model';
 import { CarService } from '../rent/car.service';
+import { RentComponent } from '../rent/rent.component';
 
 @Component({
   selector: 'app-res-details',
@@ -19,6 +20,7 @@ export class ResDetailsComponent implements OnInit {
   price: number;
   bestuurders: number;
   datum: Date
+  public locations = [];
 
   Reservations = [];
   constructor(private carService: CarService,
@@ -30,7 +32,15 @@ export class ResDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let route = this.activatedRoute.snapshot.params['id']
-    this.car = this.carService.cars[route - 1];
+    // this.car = this.carService.cars[route - 1];
+    this.carService.cars.forEach(car => {
+      if (car.id == route){
+        this.car = car
+      }
+    });
+    for (let car of this.carService.cars) {
+      this.locations.push(car.location);
+    }
     this.loggedInUser == this.loginService.loggedInUser;
     this.price = this.car.price;
     this.form = this.fb.group({
@@ -38,6 +48,7 @@ export class ResDetailsComponent implements OnInit {
       Kinderstoel: new FormControl(),
       Volgetankt: new FormControl(),
       Navigatie: new FormControl(),
+      Location: new FormControl(),
       dateRange : new FormGroup({
         startDate: new FormControl(),
         endDate: new FormControl()
@@ -49,7 +60,6 @@ export class ResDetailsComponent implements OnInit {
     this.loggedInUser = this.loginService.loggedInUser;
     return this.loggedInUser
   }
-
   onSubmit(){
     this.loggedInUser = this.loginService.loggedInUser;
     let Bestuurders = this.form.value.Bestuurders
@@ -59,12 +69,11 @@ export class ResDetailsComponent implements OnInit {
       Bestuurders += 1
     }
     let Kinderstoel = this.form.value.Kinderstoel
+    let Location = this.form.value.Location
     let Volgetankt = this.form.value.Volgetankt
     let Navigatie = this.form.value.Navigatie
     let startDate = this.form.value['dateRange']['startDate'];
     let endDate = this.form.value['dateRange']['endDate'];
-    let DaysArray = this.getDaysArray(startDate, endDate)
-    let DaysNumber = this.getDaysNumber(startDate,endDate)
     let reservationArray = {
       "userId": this.loggedInUser.id,
       "carId": this.car.id,
@@ -75,12 +84,12 @@ export class ResDetailsComponent implements OnInit {
       "volgetankt": Volgetankt,
       "startDate": startDate,
       "endDate": endDate,
+      "Location": Location,
     }
     let checkDate: Date[] = this.getDaysArray(startDate,endDate)
     for(let date in checkDate){
       for(let date2 in this.ReservationDates){
         if(checkDate[date].getDate() == this.ReservationDates[date2].getDate()){
-          // console.log(checkDate[date], this.ReservationDates[date2])
           alert("This date is already taken. Click the reserved dates to see the reserved dates")
           return
         }
@@ -97,12 +106,16 @@ export class ResDetailsComponent implements OnInit {
       error => console.error(error))
     }
   }
+
+  //Get all days from begin to end date
   getDaysArray = function(startDate, endDate) {​​
     for(var arr=[],dt=new Date(startDate); dt<=endDate; dt.setDate(dt.getDate()+1)){​​
         arr.push(new Date(dt));
     }​​
     return arr;
   }​​;
+
+  //Get start date till end date calculation
   getDaysNumber = function(startDate, endDate) {​​
     for(var arr=0,dt=new Date(startDate); dt<=endDate; dt.setDate(dt.getDate()+1)){​​
         arr++;

@@ -1,99 +1,99 @@
-$navbarColor: rgb(226, 120, 21);
-$buttonHoverColor: rgb(228, 148, 74);
-$textColor:black;
-$buttonActiveColor:rgb(189, 104, 26);
-.navbar{
-  display: flex;
-  width: 100%;
-  background:$navbarColor;
-  padding:25px;
-  padding-left: 100px;
-  @media screen and (max-width: 1170px) {
-    padding: 25px;
-    display: grid;
-    grid-template-rows: 17% 17% 17% 17% 17% 17%;
-    .left{
-      flex-direction: column;
-    }
-  }
-  p{
-    padding-top: 25px;
-    font-size: 25px;
-    padding-right: 25px;
-    margin: 0;
-    color: black;
-    &:active{
-      border: none;
-    } 
-    &:hover{
-      cursor: pointer;
-    }
-    outline: none;
-  }
-    justify-content: flex-start;
-    flex-grow: 1;
-    a{
-      font-size: 25px;
-      padding:25px;
-      border-radius: 0;
-      border: 0;
-      background:$navbarColor;
-      text-decoration: none;
-      color: $textColor;
-    }
-    .login{
-      margin-left: auto;
-    }
-    @media screen and (max-width: 1170px) {
-      .login{
-        margin-left: 0;
-      }
-      .register{
-        width: calc(85% + 1px);
-      }
-    }
-    .register{
-      margin-right:200px;
-    }
-    h1{
-      font-size: 25px;
-      padding:25px;
-      border-radius: 0;
-      border: 0;
-      background:$navbarColor;
-      text-decoration: none;
-      color: $textColor;
-    }
-    a:hover{
-      background:$buttonHoverColor;
-      cursor: pointer;
-    }
-    a:active{
-      background:$buttonActiveColor;
+// $navbarColor: rgb(226, 120, 21);
+// $buttonHoverColor: rgb(228, 148, 74);
+// $textColor:black;
+// $buttonActiveColor:rgb(189, 104, 26);
+// .navbar{
+//   display: flex;
+//   width: 100%;
+//   background:$navbarColor;
+//   padding:25px;
+//   padding-left: 100px;
+//   @media screen and (max-width: 1170px) {
+//     padding: 25px;
+//     display: grid;
+//     grid-template-rows: 17% 17% 17% 17% 17% 17%;
+//     .left{
+//       flex-direction: column;
+//     }
+//   }
+//   p{
+//     padding-top: 25px;
+//     font-size: 25px;
+//     padding-right: 25px;
+//     margin: 0;
+//     color: black;
+//     &:active{
+//       border: none;
+//     } 
+//     &:hover{
+//       cursor: pointer;
+//     }
+//     outline: none;
+//   }
+//     justify-content: flex-start;
+//     flex-grow: 1;
+//     a{
+//       font-size: 25px;
+//       padding:25px;
+//       border-radius: 0;
+//       border: 0;
+//       background:$navbarColor;
+//       text-decoration: none;
+//       color: $textColor;
+//     }
+//     .login{
+//       margin-left: auto;
+//     }
+//     @media screen and (max-width: 1170px) {
+//       .login{
+//         margin-left: 0;
+//       }
+//       .register{
+//         width: calc(85% + 1px);
+//       }
+//     }
+//     .register{
+//       margin-right:200px;
+//     }
+//     h1{
+//       font-size: 25px;
+//       padding:25px;
+//       border-radius: 0;
+//       border: 0;
+//       background:$navbarColor;
+//       text-decoration: none;
+//       color: $textColor;
+//     }
+//     a:hover{
+//       background:$buttonHoverColor;
+//       cursor: pointer;
+//     }
+//     a:active{
+//       background:$buttonActiveColor;
       
-    }
-    .active{
-      background: $buttonHoverColor;
-  }
-    padding-right: 200px;
-    a{
-      font-size: 25px;
-      border-radius: 0;
-      padding:25px;
-      border: 0;
-      background:$navbarColor;
-      text-decoration: none;
-      color: $textColor;
-    }
-    a:hover{
-      background:$buttonHoverColor;
-      cursor: pointer;
-    }
-    a:active{
-      background:$buttonActiveColor;
+//     }
+//     .active{
+//       background: $buttonHoverColor;
+//   }
+//     padding-right: 200px;
+//     a{
+//       font-size: 25px;
+//       border-radius: 0;
+//       padding:25px;
+//       border: 0;
+//       background:$navbarColor;
+//       text-decoration: none;
+//       color: $textColor;
+//     }
+//     a:hover{
+//       background:$buttonHoverColor;
+//       cursor: pointer;
+//     }
+//     a:active{
+//       background:$buttonActiveColor;
       
-    }
-    .active{
-      background: $buttonHoverColor;
-  }
-}
+//     }
+//     .active{
+//       background: $buttonHoverColor;
+//   }
+// }

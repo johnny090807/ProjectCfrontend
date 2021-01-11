@@ -1,38 +1,27 @@
 <nav class ="navbar is-dark is-bold">
   <!-- Logo -->
   <div class = "navbar-brand">
-   <a class = "navbar-item">
-    CrsX
+   <a class = "navbar-item" routerLink="Home">
+    {{this.title}}
    </a>
    </div>
 
       <!-- menu -->
   <div class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" routerLink="">Home</a>
-      <a class="navbar-item" routerLink="contact">Contact</a>
-    </div>
+  <div class="navbar-start">
+    <a class="navbar-item" routerLink="Home">Home</a>
+    <a class="navbar-item" routerLink="Contact">Contact</a>
+    <a class="navbar-item" routerLink="Rent">Rent</a>
+    <a class="navbar-item" routerLink="Admin">Admin</a>
+  </div>
+  <div *ngIf="this.loggedIn() == null" class="navbar-end">
+    <a class="navbar-item" routerLink="Login">Login</a>
+    <a class="navbar-item" routerLink="Register">Register</a>
+  </div>
+  <div *ngIf="this.loggedIn() != null" class="navbar-end">
+  <a class="navbar-item" routerLink="CarRegister">Add car!</a>
+    <a class="navbar-item" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
+    <a class="navbar-item" (click)="this.Logout()">Logout</a>
+  </div>
   </div>
 </nav>
-<!-- =======
-  <a routerLink="/Home" type="button" class="home" routerLinkActive="active"
-    >Home</a
-  >
-  <a routerLink="/Rent" type="button" class="rent" routerLinkActive="active"
-    >Rent a car!</a
-  >
-  <a routerLink="/About" type="button" class="about" routerLinkActive="active"
-    >About us</a
-  >
-  <a routerLink="/Login" type="button" class="login" routerLinkActive="active"
-    >Log in</a
-  >
-  <a
-    routerLink="/Register"
-    type="button"
-    class="register"
-    routerLinkActive="active"
-    >Register</a
-  >
-</nav>
->>>>>>> 8c47d8af2c87b807411e6eaec8279040378b5d8e -->

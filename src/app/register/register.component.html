@@ -54,6 +54,20 @@
                 </div>
             </div>
             <div>
+                <h1 style="color: white;">Age:</h1>
+                <input type="date" formControlName="Age" required>
+                <div class="errorLabel" *ngIf="registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched)">
+                    <div *ngIf="registerForm.controls.Age.errors.required">This is not a real email address!</div>
+                </div>
+            </div>
+            <div>
+                <h1 style="color: white;">PhoneNumber:</h1>
+                <input type="email" formControlName="PhoneNumber" placeholder="PhoneNumber" required>
+                <div class="errorLabel" *ngIf="registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched)">
+                    <div *ngIf="registerForm.controls.PhoneNumber.errors.required">This is not a real email address!</div>
+                </div>
+            </div>
+            <div>
                 <input class="registerButton" type="submit" [disabled]="!this.registerForm.valid" value="Register">
             </div>
             <div>

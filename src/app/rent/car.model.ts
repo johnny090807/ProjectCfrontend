@@ -1,9 +1,12 @@
 export class Car{
     id:number;
-    name:string;
-    type:string;
+    brand:string;
+    model:string;
     price:number;
-    review:number;
-    address:string;
+    mileage:number;
+    doors:number;
+    carAge:number;
+    location:string;
     imageUrl:string;
+    imagePath:string;
 }

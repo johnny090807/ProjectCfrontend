@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { LoginService } from './login/login-service.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { CarService } from './rent/car.service';
 
 
 @Component({
@@ -15,10 +16,12 @@ export class AppComponent {
   image: SafeUrl;
   constructor(private http: HttpClient,
               private loginService: LoginService,
-              private sanitizer: DomSanitizer){
+              private sanitizer: DomSanitizer,
+              private carService: CarService){
                 localStorage.setItem('serverIp', 'http://localhost:8080')
                 this.getImage()
                 this.loginService.loggedIn()
+                this.carService.getAllCars()
               }
    getImage(){
     let headers = new HttpHeaders({'Content-Type': 'image/png',

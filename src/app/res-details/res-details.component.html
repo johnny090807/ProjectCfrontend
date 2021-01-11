@@ -24,6 +24,12 @@
                 <input type="checkbox" value="12.50" formControlName="Navigatie" (change)="this.onChange()">
                 Navigatie systeem - €12,50 totaal
             </label>
+            <label class="input">
+                    <select formControlName="Location">
+                      <option *ngFor="let location of locations | unique" [ngValue]="location">{{location}}</option>
+                    </select>
+            </label>
+           
             <label for="DateRange">
                 <h2>Choose your date:</h2>
                 <mat-date-range-input 

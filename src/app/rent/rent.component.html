@@ -14,7 +14,7 @@
   </h1>
   <div class="locationFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Locations</h2>
+      <h2 style="background-color: grey; margin-top: 0">Locations:</h2>
       <br />
       <div *ngFor="let location of locations | unique">
         <input
@@ -28,7 +28,7 @@
 
   <div class="brandFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Brands</h2>
+      <h2 style="background-color: grey; margin-top: 0">Brands:</h2>
       <br />
       <div *ngFor="let brand of brands | unique">
         <input
@@ -42,7 +42,7 @@
 
   <div class="gearboxFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Gearbox Type</h2>
+      <h2 style="background-color: grey; margin-top: 0">Model:</h2>
       <br />
       <div *ngFor="let gearbox of gearboxes | unique">
         <input
@@ -70,21 +70,20 @@
       </form> 
     </div>
   </div>
-    <div class="occasionBar" *ngFor="let car of cars">
+    <div class="occasionBar" *ngFor="let car of cars; let i = index">
         <div class="occasion">
             <div class="top">
-                <img class="occasionImg" src="{{car.imageUrl}}" alt="Car">
+                <img class="occasionImg" [src]="this.sanitize(this.car.imageUrl)" alt="Car">
                 <div>
-                    <h2 class="title">{{car.name}}</h2>
-                    <p>{{car.type}}</p>
+                    <h2 class="title">{{car.brand}}</h2>
+                    <p>{{car.model}}</p>
                 </div>
                 <div>
                     <h2>€{{car.price}}</h2>
                 </div>
             </div>
             <div class="bottom">
-                <p class="beoordeling">{{car.review}} Uitstekend</p>
-                <p class="straatnaam">{{car.address}}</p>
+                <p class="straatnaam">{{car.location}}</p>
                 <button [routerLink]="['/Rent', car.id]">Bekijk nu</button>
             </div> 
     </div>

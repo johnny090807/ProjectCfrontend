@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="section">
+        <div class="tile is-anchestor">
+            <div class="tile is-12 is-vertical is-parent" >
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Car name:</th>
+                            <th>Start Date:</th>
+                            <th>End Date:</th>
+                            <th>Kinderstoel:</th>
+                            <th>Bestuurders:</th>
+                            <th>Volgetankt:</th>
+                            <th>Navigatie:</th>
+                            <th>Afzet locatie:</th>
+                        </tr>
+                    </thead>
+                    <tbody  *ngFor="let reservation of reservations">
+                        <tr>
+                            <th>{{reservation.carId}}</th>
+                            <th>{{reservation.startDate | date}}</th>
+                            <th>{{reservation.endDate | date}}</th>
+                            <th>{{reservation.kinderstoel}}</th>
+                            <th>{{reservation.bestuurders}}</th>
+                            <th>{{reservation.volgetankt}}</th>
+                            <th>{{reservation.navigatie}}</th>
+                            <th>{{reservation.dropoff}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

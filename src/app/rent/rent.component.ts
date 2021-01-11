@@ -1,4 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { promise } from 'protractor';
 import { Car } from './car.model';
 import { CarService } from './car.service';
 @Component({
@@ -20,30 +23,41 @@ export class RentComponent implements OnInit {
   public prices = [];
   public carsFilteredOnPrice = [];
   public oldCars = [];
-  constructor(private carService: CarService) { }
+  public images = [];
+  constructor(private carService: CarService,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.cars = this.carService.returnCars();
-    this.oldCars = this.cars;
-    this.carsFilteredOnLocation = this.cars;
-    this.carsFilteredOnBrand = this.cars;
-    this.carsFilteredOnGearbox = this.cars;
-    this.carsFilteredOnPrice = this.cars
-    for (let car of this.cars) {
-      this.locations.push(car.address);
-      this.brands.push(car.name);
-      this.gearboxes.push(car.type);
-      this.prices.push(car.price);
-    }
+    
+    Promise.resolve().then(_ => this.carService.getAllCars())
+    setTimeout(_ => {
+      this.cars = this.carService.returnCars();
+      this.carService.storeImages()
+      this.images = this.carService.images;
+      this.oldCars = this.cars;
+      this.carsFilteredOnLocation = this.cars;
+      this.carsFilteredOnBrand = this.cars;
+      this.carsFilteredOnGearbox = this.cars;
+      this.carsFilteredOnPrice = this.cars
+      for (let car of this.cars) {
+        this.locations.push(car.location);
+        this.brands.push(car.brand);
+        this.gearboxes.push(car.model);
+        this.prices.push(car.price);
+      }
+    }, 200)
+   
   }
-
   filterCars() {
     this.cars = this.oldCars.filter(c => this.carsFilteredOnLocation.includes(c));
     this.cars = this.cars.filter(c => this.carsFilteredOnBrand.includes(c));
     this.cars = this.cars.filter(c => this.carsFilteredOnGearbox.includes(c));
     this.cars = this.cars.filter(c => this.carsFilteredOnPrice.includes(c));
   }
-
+  
+  sanitize( url ){
+    return this.sanitizer.bypassSecurityTrustUrl(url)
+  }
   uncheckall() { //unUsed right now
     this.cars = this.oldCars;
   }
@@ -52,7 +66,7 @@ export class RentComponent implements OnInit {
     this.carsFilteredOnLocation = [];
     for (let location of this.checkedLocations) {
       for (let car of this.oldCars) {
-        if (location === car.address) {
+        if (location === car.location) {
           this.carsFilteredOnLocation.push(car);
         }
       }
@@ -84,7 +98,7 @@ export class RentComponent implements OnInit {
     this.carsFilteredOnBrand = [];
     for (let brand of this.checkedBrands) {
       for (let car of this.oldCars) {
-        if (brand === car.name) {
+        if (brand === car.brand) {
           this.carsFilteredOnBrand.push(car);
         }
       }
@@ -115,7 +129,7 @@ export class RentComponent implements OnInit {
     this.carsFilteredOnGearbox = [];
     for (let gearbox of this.checkedGearboxes) {
       for (let car of this.oldCars) {
-        if (gearbox === car.type) {
+        if (gearbox === car.model) {
           this.carsFilteredOnGearbox.push(car);
         }
       }

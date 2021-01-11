@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ResDetailsComponent } from './res-details/res-details.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminCarsComponent } from './admin-cars/admin-cars.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AdminCarsComponent } from './admin-cars/admin-cars.component';
     CarReservationComponent,
     ResDetailsComponent,
     AdminUsersComponent,
-    AdminCarsComponent
+    AdminCarsComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,

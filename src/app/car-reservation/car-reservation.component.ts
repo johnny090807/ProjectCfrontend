@@ -22,7 +22,12 @@ export class CarReservationComponent implements OnInit {
 
   ngOnInit(): void {
     let route = this.activatedRoute.snapshot.params['id']
-    this.car = this.carService.cars[route - 1];
+    this.carService.cars.forEach(car => {
+      if (car.id == route){
+        this.car = car
+      }
+    });
+    // this.car = this.carService.cars['id'].find(route);
     this.loggedInUser == this.loginService.loggedInUser;
     this.form = this.fb.group({
       dateRange : new FormGroup({
