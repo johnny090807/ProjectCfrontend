@@ -13,6 +13,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   loggedInUser: User;
   title = "Crsx";
+  expanded = false;
   constructor(public loginService: LoginService,
     private http: HttpClient) { }
 
@@ -20,6 +21,9 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       this.loggedInUser = this.loginService.loggedInUser
     }, 500);
+  }
+  public changeExpanded(){
+    this.expanded = !this.expanded;
   }
   public loggedIn() {
     this.loggedInUser = this.loginService.loggedInUser;
