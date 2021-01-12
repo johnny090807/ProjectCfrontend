@@ -1622,7 +1622,7 @@ class AppComponent {
         this.loginService = loginService;
         this.sanitizer = sanitizer;
         this.carService = carService;
-        localStorage.setItem('serverIp', 'http://192.168.1.17:8080/CrsX-1.0-SNAPSHOT');
+        localStorage.setItem('serverIp', 'http://51.144.75.83:8080/CrsX-1.0-SNAPSHOT');
         this.getImage();
         this.loginService.loggedIn();
         this.carService.getAllCars();
