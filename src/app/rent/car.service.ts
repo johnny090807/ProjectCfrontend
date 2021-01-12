@@ -33,12 +33,12 @@ export class CarService {
   async getAllCars(){
     let IpLink = localStorage.getItem('serverIp');
     let headers = new HttpHeaders({'Content-Type': 'application/json'});
-    this.http.get(IpLink + '/api/getCars', {headers, responseType: 'json'})
-    .subscribe((res: Array<Car>) => {
-      this.cars = res
-    },
-    error=> console.log(error))
-    
+    this.http.get(IpLink + '/api/getCars', { headers, responseType: 'json' })
+      .subscribe((res: Array<Car>) => {
+        this.cars = res;
+      },
+        error => console.log(error))
+    // return returnthing
   }
   public storeImages(){
     let headers = new HttpHeaders({'Content-Type': 'image/png',

@@ -22,6 +22,7 @@ export class AppComponent {
                 this.getImage()
                 this.loginService.loggedIn()
                 this.carService.getAllCars()
+                // console.log(this.carService.cars)
               }
    getImage(){
     let headers = new HttpHeaders({'Content-Type': 'image/png',

@@ -31,21 +31,21 @@
         </div>
         <div class="field">
             <label for="carAge">Car age:</label><br>
-            <input class="input" type="number" formControlName="carAge"required>
+            <input class="input" type="number" formControlName="carAge" required>
         </div>
         <div class="field">
             <label for="mileage">Mileage:</label><br>
-            <input class="input" type="number" formControlName="mileage"required>
+            <input class="input" type="number" formControlName="mileage" required>
         </div>
         <div class="field">
             <label for="doors">Doors:</label><br>
-            <input class="input" type="number" formControlName="doors"required>
+            <input class="input" type="number" formControlName="doors" required>
         </div>
         <div class="field">
           <br>
           <label for="carPicture">Upload a picture of the car:</label><br><br>
           <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>
-          <button class="button is-white is-outlined mr-6" [disabled]="!this.CarRegisterForm.valid" (click)="selectFile.click()">Select File</button>
+          <button class="button is-white is-outlined mr-6" (click)="selectFile.click()">Select File</button>
         </div>
         <div *ngIf="imagePreview != null" class="image-preview" >
             <img [src]="imagePreview" >

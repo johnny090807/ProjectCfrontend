@@ -28,12 +28,12 @@ export class RegisterCarComponent implements OnInit {
 
   ngOnInit(): void {
     this.CarRegisterForm = this.formBuilder.group({
-      brand: new FormControl('', [Validators.required]),
-      model: new FormControl('', [Validators.required]),
-      location: new FormControl('', [Validators.required]),
-      carAge: new FormControl('', [Validators.required]),
-      mileage: new FormControl('', [Validators.required]),
-      doors: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      brand: ['', Validators.required],
+      model: ['', Validators.required],
+      location: ['', Validators.required],
+      carAge: ['', Validators.required],
+      mileage: ['', Validators.required],
+      doors: [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
     });
   }
 
@@ -42,7 +42,7 @@ export class RegisterCarComponent implements OnInit {
     pic.append("MyFile", this.selectedFile, this.selectedFile.name);
     let headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
     const IpLink = localStorage.getItem('serverIp');
-
+    // console.log(this.CarRegisterForm)
     this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
     .subscribe(res => {
       console.log(res);
