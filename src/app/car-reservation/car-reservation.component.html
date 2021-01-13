@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
 <div class="container">
     <div class="left">
 
@@ -7,17 +16,17 @@
             <img src="{{this.car.imageUrl}}" alt="">
         </div>
         <div class="Information">
-            <p>{{this.car.name}}</p>
-            <p>{{this.car.type}}</p>
-            <p>{{this.car.review}}</p>
+            <p>{{this.car.brand}}</p>
+            <p>{{this.car.model}}</p>
         </div>
         <div class="Price">
-            <p>Vanaf: €{{this.car.price}} p/m</p>
+            <p>Vanaf: €{{this.car.price}} p/d</p>
         </div>
-        
+
         <div class="confirmation-tab">
             <div>
-                <button>Reserveer</button>
+                <button [routerLink]="['/Res', this.car.id]" *ngIf="this.LoggedIn() != null">Reserveer</button>
+                <button [routerLink]="['/Login']" *ngIf="this.LoggedIn() == null">Login!</button>
                 <button routerLink="/Rent">Cancel</button>
             </div>
         </div>
@@ -28,7 +37,7 @@
         </div>
         <div class="location-tab-right">
             <div>
-                <h1>{{this.car.address}}</h1>
+                <h1>{{this.car.location}}</h1>
             </div>
         </div>
     </div>
@@ -36,7 +45,8 @@
 
     </div>
 </div>
-
+</body>
+</html>
 
 <!-- <h1>{{this.car.name}}</h1>
 <h1>{{this.car.type}}</h1>

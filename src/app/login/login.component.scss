@@ -1,80 +1,80 @@
-$loginFormColor: black;
-$textColor: black;
-.loginFormContainer{
-    background-color:$loginFormColor;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    form{
-        grid-column: 2;
-        .loginForm{
-            .errorLabel{
-                margin-left: 50%;
-                .errorMessage{
-                    white-space: nowrap;
-                    font-size: 25px;
-                    color: red;
-                }
+// $loginFormColor: black;
+// $textColor: black;
+// .loginFormContainer{
+//     background-color:$loginFormColor;
+//     height: 100%;
+//     display: grid;
+//     grid-template-columns: 25% 50% 25%;
+//     form{
+//         grid-column: 2;
+//         .loginForm{
+//             .errorLabel{
+//                 margin-left: 50%;
+//                 .errorMessage{
+//                     white-space: nowrap;
+//                     font-size: 25px;
+//                     color: red;
+//                 }
             
-            .validateMessage{
-                    white-space: nowrap;
-                    font-size: 25px;
-                    color: green;
-                }
-            }
-            h1{
-                word-wrap: normal;
-                text-align: center;
-                grid-column: 2;
-            }
+//             .validateMessage{
+//                     white-space: nowrap;
+//                     font-size: 25px;
+//                     color: green;
+//                 }
+//             }
+//             h1{
+//                 word-wrap: normal;
+//                 text-align: center;
+//                 grid-column: 2;
+//             }
             
-            display: grid;
-            grid-template-columns: 25% 50% 25%;
-            .username, .password{
-                height: 50px;
-                font-size: 25px;
-                margin: 25px;
-                margin-right: 10%;
-                margin-left: 10%;
-                grid-column-start: 1;
-                grid-column-end: 4;
-                background:grey;
-                border: 1px solid white;
-            }
-            ::placeholder{
-                color:black;
-            }
-            @media screen and (max-width: 1170px) {
-                .username, .password{
-                    margin-left: -75px;
-                    margin-right: -75px;
-                }
-            }
-            .buttonDiv{
-                grid-column-start: 1;
-                grid-column-end: 4;
-                float: left;
-                margin: 25px;
-                margin-left: 10%;
-                margin-right: 10%;
-                margin-top: 25px;
-                font-size: 50px;
-                button,input{
-                    min-width: 125px;
-                    width: 100%;
-                    height: 50px;
-                    background: grey;
-                    border: 1px solid white;
-                    color: $textColor;
-                    font-size: x-large;
-                }
-            }
-            button:active{
-                background: rgb(255, 255, 255);
-            }
-            button:hover{
-                background: rgb(136, 136, 136);
-            }
-        }
-    }
-}
+//             display: grid;
+//             grid-template-columns: 25% 50% 25%;
+//             .username, .password{
+//                 height: 50px;
+//                 font-size: 25px;
+//                 margin: 25px;
+//                 margin-right: 10%;
+//                 margin-left: 10%;
+//                 grid-column-start: 1;
+//                 grid-column-end: 4;
+//                 background:grey;
+//                 border: 1px solid white;
+//             }
+//             ::placeholder{
+//                 color:black;
+//             }
+//             @media screen and (max-width: 1170px) {
+//                 .username, .password{
+//                     margin-left: -75px;
+//                     margin-right: -75px;
+//                 }
+//             }
+//             .buttonDiv{
+//                 grid-column-start: 1;
+//                 grid-column-end: 4;
+//                 float: left;
+//                 margin: 25px;
+//                 margin-left: 10%;
+//                 margin-right: 10%;
+//                 margin-top: 25px;
+//                 font-size: 50px;
+//                 button,input{
+//                     min-width: 125px;
+//                     width: 100%;
+//                     height: 50px;
+//                     background: grey;
+//                     border: 1px solid white;
+//                     color: $textColor;
+//                     font-size: x-large;
+//                 }
+//             }
+//             button:active{
+//                 background: rgb(255, 255, 255);
+//             }
+//             button:hover{
+//                 background: rgb(136, 136, 136);
+//             }
+//         }
+//     }
+// }

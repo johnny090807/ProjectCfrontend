@@ -23,15 +23,16 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    
-    this.carService.getAllCars()
-    .subscribe(res => console.log(res),
-              error => console.log(error))
+    // this.carService.getAllCars()
+    // .subscribe(res => console.log(res),
+    //           error => console.log(error))
   }
 
   onSubmit(values){
     if (values.username != "" && values.password != ""){
       this.loginService.checkLogin(values.username, values.password)
+      localStorage.setItem('userName', values.username);
+      localStorage.setItem('password', values.password);
     }
   }
 }

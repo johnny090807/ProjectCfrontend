@@ -11,6 +11,8 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
 import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { ResDetailsComponent } from './res-details/res-details.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 const routes: Routes = [
@@ -24,12 +26,14 @@ const routes: Routes = [
   { path: 'About', component: AboutComponent },
   { path: 'Rent', component: RentComponent },
   { path: 'Rent/:id', component: CarReservationComponent },
+  { path: 'Res/:id', component: ResDetailsComponent },
+  { path: 'User/:id', component: UserInfoComponent },
   { path: 'CarRegister', component: RegisterCarComponent },
   { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

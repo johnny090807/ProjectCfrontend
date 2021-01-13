@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
             Car rental service X
           </h1>
           <h2 class="subtitle">
-          The best way too rent a car
+          The best way to rent a car
           </h2>
         </div>
       </div>
@@ -22,7 +22,7 @@ import { Component, OnInit } from '@angular/core';
       background-size: cover;
       background-position: center center;
     }
-      
+
   `]
 })
 export class HomeComponent implements OnInit {

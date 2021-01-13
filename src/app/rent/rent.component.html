@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Login</title>
+</head>
+<body>
 <script>
   const button = document.querySelector("button")
-  const input = document.querySelector("#minPrice")  
-  
+  const input = document.querySelector("#minPrice")
+
   button.addEventListener("click", () => {
     const { value } = input
     console.log(value)
@@ -14,7 +23,7 @@
   </h1>
   <div class="locationFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Locations</h2>
+      <h2 style="background-color: grey; margin-top: 0">Locations:</h2>
       <br />
       <div *ngFor="let location of locations | unique">
         <input
@@ -28,7 +37,7 @@
 
   <div class="brandFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Brands</h2>
+      <h2 style="background-color: grey; margin-top: 0">Brands:</h2>
       <br />
       <div *ngFor="let brand of brands | unique">
         <input
@@ -42,7 +51,7 @@
 
   <div class="gearboxFilter" style="grid-row-end: '{{ cars.length + 3 }}';">
     <div>
-      <h2 style="background-color: grey; margin-top: 0">Gearbox Type</h2>
+      <h2 style="background-color: grey; margin-top: 0">Model:</h2>
       <br />
       <div *ngFor="let gearbox of gearboxes | unique">
         <input
@@ -67,27 +76,27 @@
         <br><br>
         <button (click)="filterCarsOnPrice()">Search</button>
         <button (click)="clearPrice()">Clear</button>
-      </form> 
+      </form>
     </div>
   </div>
-
-  <div class="occasionBar" *ngFor="let car of cars">
-    <div class="occasion">
-      <div class="top">
-        <img class="occasionImg" src="{{ car.imageUrl }}" alt="Car" />
-        <div>
-          <h2 class="title">{{ car.name }}</h2>
-          <p>{{ car.type }}</p>
-        </div>
-        <div>
-          <h2>€{{ car.price }}</h2>
-        </div>
-      </div>
-      <div class="bottom">
-        <p class="beoordeling">{{ car.review }} Uitstekend</p>
-        <p class="straatnaam">{{ car.address }}</p>
-        <button [routerLink]="['/Rent', car.id]">Reserveer nu</button>
-      </div>
+    <div class="occasionBar" *ngFor="let car of cars; let i = index">
+        <div class="occasion">
+            <div class="top">
+                <img class="occasionImg" [src]="this.sanitize(this.car.imageUrl)" alt="Car">
+                <div>
+                    <h2 class="title">{{car.brand}}</h2>
+                    <p>{{car.model}}</p>
+                </div>
+                <div>
+                    <h2>€{{car.price}}</h2>
+                </div>
+            </div>
+            <div class="bottom">
+                <p class="straatnaam">{{car.location}}</p>
+                <button [routerLink]="['/Rent', car.id]">Bekijk nu</button>
+            </div>
     </div>
   </div>
 </div>
+</body>
+</html>
