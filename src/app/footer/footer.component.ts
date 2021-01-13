@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <footer class="footer is-dark is-bold">
       <div class="content has-text-centered">
         <p>
-          Reynethan Leon
+          Majority of the design by: Reynethan Leon
         </p>
       </div>
     </footer>
