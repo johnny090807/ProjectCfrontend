@@ -43,6 +43,7 @@ export class RegisterCarComponent implements OnInit {
     pic.append("MyFile", this.selectedFile, this.selectedFile.name);
     let headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
     const IpLink = localStorage.getItem('serverIp');
+
     // console.log(this.CarRegisterForm)
     this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
     .subscribe(res => {
@@ -64,6 +65,7 @@ export class RegisterCarComponent implements OnInit {
       },
       error => alert(error.message))
     }), error => alert(error.message)
+
 
   }
 
@@ -120,37 +122,11 @@ export class RegisterCarComponent implements OnInit {
     // }
 
 }
+
+}
   // OnUploadFile() {
   // //Upload file here send a binary data
   //   this.http.post('api/file-upload', this.selectedFile)
   //   .subscribe(message => alert(message),
   //   error => alert(error.message));
   // }
-
-
-    // url;
-    // msg = "";
-
-    // selectFile(event) {
-    //   let imageToUpload = null;
-
-    //   if(!event.target.files[0] || event.target.files[0].length == 0) {
-    //     this.msg = 'You must select an image';
-    //     return;
-    //   }
-
-    //   var mimeType = event.target.files[0].type;
-
-    //   if (mimeType.match(/image\/*/) == null) {
-    //     this.msg = "Only images are supported";
-    //     return;
-    //   }
-
-      // var reader = new FileReader();
-      // reader.readAsDataURL(event.target.files[0]);
-
-      // reader.onload = (_event) => {
-      //   this.msg = "";
-      //   this.url = reader.result;
-
-    //   }

@@ -6,17 +6,43 @@
   <title>Document</title>
 </head>
 <body>
+  <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getCars()">GET CARS</button></h1>
-  <h1><button (click)="getCar(1)">GET CAR</button></h1>
+  <h1><button (click)="searchCars()">SEARCH CARS</button> SEARCH: <input name="search" id="search" type="text"></h1>
+  <h1><button (click)="[getCar(), getImage()]">GET CAR</button> ID: <input name="id" id="id" type="text"> </h1>
 
-  <div *ngFor="let car of this.cars">
-    <div class="car">
-      <h2>{{car.carAge}} {{car.brand}} {{car.model}}</h2>
-    </div>
-    <br>
-  </div>
   <h1><button routerLink="../CarRegister">ADD CAR</button></h1>
-  <!-- ../CarRegister.... waarom werkt dat zo??!?!?! XD -->
+
+  <div *ngIf="selection">
+    <div class="car">
+      <div *ngFor="let car of this.cars">
+        <h2>Id: <input type="number" name="carId" id="carId" value={{car.id}}></h2>
+        <h2>Brand: <input type="text" name="carBrand" id="carBrand" value={{car.brand}}></h2>
+        <h2>Model: <input type="text" name="carModel" id="carModel" value={{car.model}}></h2>
+        <h2>Location: <input type="text" name="carLocation" id="carLocation" value={{car.location}}></h2>
+        <h2>Build year: <input type="number" name="carAge" id="carAge" value={{car.carAge}}></h2>
+        <h2>Mileage: <input type="number" name="carMileage" id="carMileage" value={{car.mileage}}></h2>
+        <h2>doors: <input type="number" name="carDoors" id="carDoors" value={{car.doors}}></h2>
+        <h2>image: <input type="text" name="carImage" id="carImage" value={{car.imagePath}}></h2>
+
+        <img [src]='image'><br>
+
+        <button (click)="saveCar()">Save Changes</button>
+        <button (click)="deleteCar()">Delete Car</button>
+        <button (click)="noCar()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!selection">
+    <div *ngFor="let car of this.cars">
+      <div class="car">
+        <h2>{{car.id}} {{car.brand}} {{car.model}} {{car.location}}</h2>
+      </div>
+      <br>
+    </div>
+  </div>
+
 
 </body>
 </html>

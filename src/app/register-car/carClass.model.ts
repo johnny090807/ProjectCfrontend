@@ -1,4 +1,5 @@
 export class CarClass {
+
     constructor(
         public brand: string,
         public model: string,

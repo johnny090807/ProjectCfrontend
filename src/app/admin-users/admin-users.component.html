@@ -6,13 +6,35 @@
   <title>Document</title>
 </head>
 <body>
+  <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getUsers()">GET USERS</button></h1>
+  <h1><button (click)="searchUsers()">SEARCH USERS</button> SEARCH: <input name="search" id="search" type="text"></h1>
+  <h1><button (click)="getUser()">GET USER</button> ID: <input name="id" id="id" type="text"> </h1>
 
-  <div *ngFor="let user of this.users">
-    <div class="user">
-      <h2>{{user.firstName}} {{user.lastName}}</h2>
+  <div *ngIf="selection">
+    <div class="car">
+      <div *ngFor="let user of this.users">
+        <h2>Id: <input type="number" name="userId" id="userId" value={{user.id}}></h2>
+        <h2>firstName: <input type="text" name="userFirstName" id="userFirstName" value={{user.firstName}}></h2>
+        <h2>lastName: <input type="text" name="userLastName" id="userLastName" value={{user.lastName}}></h2>
+        <h2>userName: <input type="text" name="userUserName" id="userUserName" value={{user.userName}}></h2>
+        <h2>password: <input type="text" name="userPassword" id="userPassword" value={{user.password}}></h2>
+        <h2>address: <input type="text" name="userAddress" id="userAddress" value={{user.address}}></h2>
+        <h2>email: <input type="text" name="userEmail" id="userEmail" value={{user.email}}></h2>
+
+        <button (click)="saveUser()">Save</button>
+        <button (click)="noUser()">Close</button>
+      </div>
     </div>
-    <br>
+  </div>
+
+  <div *ngIf="!selection">
+    <div *ngFor="let user of this.users">
+      <div class="user">
+        <h2>{{user.id}} {{user.firstName}} {{user.lastName}} {{user.address}}</h2>
+      </div>
+      <br>
+    </div>
   </div>
 
 </body>
