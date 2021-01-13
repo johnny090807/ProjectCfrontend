@@ -20,7 +20,7 @@
     </div>
     <div class="middle">
         <form [formGroup]="form">
-            <input type="number" class="input" placeholder="Extra bestuurders - €20 per extra bestuurder" formControlName="Bestuurders" [ngModel]="bestuurders" (ngModelChange)="this.onChange()">
+            <input type="number" class="input" placeholder="Extra drivers - €20 per extra driver" formControlName="Bestuurders" [ngModel]="bestuurders" (ngModelChange)="this.onChange()">
             <label class="input">
                 <input type="checkbox" value="20" formControlName="Kinderstoel" (change)="this.onChange()">
                 Childseat - €20
