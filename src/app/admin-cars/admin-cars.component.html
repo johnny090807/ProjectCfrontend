@@ -8,6 +8,7 @@
 <body>
   <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getCars()">GET CARS</button></h1>
+  <h1><button (click)="searchCars()">SEARCH CARS</button> SEARCH: <input name="search" id="search" type="text"></h1>
   <h1><button (click)="[getCar(), getImage()]">GET CAR</button> ID: <input name="id" id="id" type="text"> </h1>
 
   <h1><button routerLink="../CarRegister">ADD CAR</button></h1>
@@ -36,7 +37,7 @@
   <div *ngIf="!selection">
     <div *ngFor="let car of this.cars">
       <div class="car">
-        <h2>{{car.id}} {{car.brand}} {{car.model}}</h2>
+        <h2>{{car.id}} {{car.brand}} {{car.model}} {{car.location}}</h2>
       </div>
       <br>
     </div>

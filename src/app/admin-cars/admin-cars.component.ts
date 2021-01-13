@@ -50,6 +50,19 @@ export class AdminCarsComponent implements OnInit {
       });
   }
 
+  // getCars() {
+  //   this.cars = [];
+  //   let IpLink = localStorage.getItem('serverIp');
+  //   this.http.get(IpLink + '/api/getCars', { responseType: 'json' })
+  //     .subscribe((response) => {
+  //       for (let i = 0; i < Object.keys(response).length; i++) {
+  //         this.car = response[i];
+  //         this.cars.push(this.car);
+  //       }
+  //       this.selection = false;
+  //     });
+  // }
+
   getCar() {
     let id = (<HTMLInputElement>document.getElementById("id")).value;
     let IpLink = localStorage.getItem('serverIp');
@@ -59,6 +72,7 @@ export class AdminCarsComponent implements OnInit {
         this.cars.push(JSON.parse(response));
         this.selection = true;
       });
+
   }
 
   deleteCar() {
@@ -76,7 +90,6 @@ export class AdminCarsComponent implements OnInit {
   }
 
   saveCar() {
-
     let carId = Number((<HTMLInputElement>document.getElementById("carId")).value);
     let carBrand = (<HTMLInputElement>document.getElementById("carBrand")).value;
     let carModel = (<HTMLInputElement>document.getElementById("carModel")).value;
@@ -98,6 +111,33 @@ export class AdminCarsComponent implements OnInit {
           window.alert("Changes Saved!");
         });
     }
+  }
+
+  searchCars() {
+    this.getCars();
+    setTimeout(() => {
+      let keywords = (<HTMLInputElement>document.getElementById("search")).value.split(" ");
+      let newCars = [];
+
+      this.cars.forEach(car => {
+        keywords.forEach(keyword => {
+          if (car.brand.toLowerCase().includes(keyword.toLowerCase())) {
+            newCars.push(car);
+          }
+          else if (car.model.toLowerCase().includes(keyword.toLowerCase())) {
+            newCars.push(car);
+          }
+          else if (car.location.toLowerCase().includes(keyword.toLowerCase())) {
+            newCars.push(car);
+          }
+        });
+      });
+
+      this.cars = newCars;
+
+    }, 1000);
+
+
   }
 
   getImage() {
