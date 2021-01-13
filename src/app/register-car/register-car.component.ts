@@ -53,7 +53,7 @@ export class RegisterCarComponent implements OnInit {
       let body = JSON.stringify(carToBeAdded);
       this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
       .subscribe(message => {
-        alert(message) 
+        alert(message)
         this.CarRegisterForm.controls['brand'].patchValue('')
         this.CarRegisterForm.controls['model'].patchValue('')
         this.CarRegisterForm.controls['location'].patchValue('')
@@ -123,7 +123,7 @@ export class RegisterCarComponent implements OnInit {
 
 }
 
-}
+
   // OnUploadFile() {
   // //Upload file here send a binary data
   //   this.http.post('api/file-upload', this.selectedFile)
