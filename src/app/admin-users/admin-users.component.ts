@@ -65,6 +65,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   createNewAdmin() {
+    this.noUser();
     this.newAdmin = true;
   }
 
@@ -89,9 +90,9 @@ export class AdminUsersComponent implements OnInit {
     this.http.get(IpLink + '/api/getUserById?id=' + id, { responseType: 'text' })
       .subscribe((response) => {
         this.users = [];
-        console.log(response);
+        this.user = JSON.parse(response)
+        console.log(this.user.id.toString());
         this.users.push(JSON.parse(response));
-        console.log(this.users);
         this.selection = true;
       });
   }
@@ -140,12 +141,28 @@ export class AdminUsersComponent implements OnInit {
           else if (user.address.toLowerCase().includes(keyword.toLowerCase())) {
             newUsers.push(user);
           }
+          else if (user.userName.toLowerCase().includes(keyword.toLowerCase())) {
+            newUsers.push(user);
+          }
         });
       });
 
       this.users = newUsers;
 
     }, 1000);
+  }
+
+  deleteUser() {
+    let id = (<HTMLInputElement>document.getElementById("id")).value;
+    let IpLink = localStorage.getItem('serverIp');
+    if (confirm("Are you sure you want to delete this user?")) {
+      this.http.delete(IpLink + '/api/deleteUser?id=' + id, { responseType: 'text' })
+        .subscribe((response) => {
+          this.users = [];
+          this.selection = false;
+          window.alert("Car Deleted!");
+        });
+    }
   }
 
 }

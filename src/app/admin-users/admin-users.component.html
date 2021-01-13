@@ -13,7 +13,7 @@
   <h1><button (click)="createNewAdmin()">NEW ADMIN</button> </h1>
 
   <div *ngIf="selection">
-    <div class="car">
+    <div class="user">
       <div *ngFor="let user of this.users">
         <h2>Id: <input type="number" name="userId" id="userId" value={{user.id}}></h2>
         <h2>firstName: <input type="text" name="userFirstName" id="userFirstName" value={{user.firstName}}></h2>
@@ -27,6 +27,7 @@
         <h2>admin: <input type="text" name="userAdmin" id="userAdmin" value={{user.admin}}></h2>
 
         <button (click)="saveUser()">Save</button>
+        <button (click)="deleteUser()">Delete User</button>
         <button (click)="noUser()">Close</button>
       </div>
     </div>
