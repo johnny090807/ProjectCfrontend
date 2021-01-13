@@ -38,6 +38,7 @@ export class AdminUsersComponent implements OnInit {
 
 
   getUsers() {
+    this.noUser();
     let IpLink = localStorage.getItem('serverIp');
     this.http.get(IpLink + '/api/getUsers', { responseType: 'json' })
       .subscribe((response) => {
@@ -84,6 +85,31 @@ export class AdminUsersComponent implements OnInit {
           window.alert("Changes Saved!");
         });
     }
+  }
+
+  searchUsers() {
+    this.getUsers();
+    setTimeout(() => {
+      let keywords = (<HTMLInputElement>document.getElementById("search")).value.split(" ");
+      let newUsers = [];
+
+      this.users.forEach(user => {
+        keywords.forEach(keyword => {
+          if (user.firstName.toLowerCase().includes(keyword.toLowerCase())) {
+            newUsers.push(user);
+          }
+          else if (user.lastName.toLowerCase().includes(keyword.toLowerCase())) {
+            newUsers.push(user);
+          }
+          else if (user.address.toLowerCase().includes(keyword.toLowerCase())) {
+            newUsers.push(user);
+          }
+        });
+      });
+
+      this.users = newUsers;
+
+    }, 1000);
   }
 
 }

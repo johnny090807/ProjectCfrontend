@@ -8,6 +8,7 @@
 <body>
   <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getUsers()">GET USERS</button></h1>
+  <h1><button (click)="searchUsers()">SEARCH USERS</button> SEARCH: <input name="search" id="search" type="text"></h1>
   <h1><button (click)="getUser()">GET USER</button> ID: <input name="id" id="id" type="text"> </h1>
 
   <div *ngIf="selection">
@@ -30,7 +31,7 @@
   <div *ngIf="!selection">
     <div *ngFor="let user of this.users">
       <div class="user">
-        <h2>{{user.id}} {{user.firstName}} {{user.lastName}}</h2>
+        <h2>{{user.id}} {{user.firstName}} {{user.lastName}} {{user.address}}</h2>
       </div>
       <br>
     </div>
