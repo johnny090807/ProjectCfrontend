@@ -9,28 +9,28 @@
   <h1><button routerLink="/Admin">RETURN</button></h1>
   <h1><button (click)="getReservations()">GET RESERVATIONS</button></h1>
   <h1><button (click)="getReservationById()">GET RESERVATION</button> ID: <input name="id" id="id" type="text"> </h1>
-  <h1><button (click)="getReservationByUserID()">GET USER RESERVATION</button> USER - ID: <input name="id" id="id" type="text"> </h1>
-  <h1><button (click)="getReservationByUserID()">GET USER RESERVATION</button> USER - ID: <input name="id" id="id" type="text"> </h1>
-
-  <h1><button routerLink="../CarRegister">ADD CAR</button></h1>
+  <h1><button (click)="getReservationByUserID()">GET USER RESERVATION</button> USER - ID: <input name="userId" id="userId" type="text"> </h1>
+  <h1><button (click)="getReservationByCarID()">GET CAR RESERVATION</button> CAR - ID: <input name="carId" id="carId" type="text"> </h1>
 
   <div *ngIf="selection">
-    <div class="car">
-      <div *ngFor="let car of this.cars">
-        <h2>Id: <input type="number" name="carId" id="carId" value={{car.id}}></h2>
-        <h2>Brand: <input type="text" name="carBrand" id="carBrand" value={{car.brand}}></h2>
-        <h2>Model: <input type="text" name="carModel" id="carModel" value={{car.model}}></h2>
-        <h2>Location: <input type="text" name="carLocation" id="carLocation" value={{car.location}}></h2>
-        <h2>Build year: <input type="number" name="carAge" id="carAge" value={{car.carAge}}></h2>
-        <h2>Mileage: <input type="number" name="carMileage" id="carMileage" value={{car.mileage}}></h2>
-        <h2>doors: <input type="number" name="carDoors" id="carDoors" value={{car.doors}}></h2>
-        <h2>image: <input type="text" name="carImage" id="carImage" value={{car.imagePath}}></h2>
+    <div class="reservation">
+      <div *ngFor="let reservation of this.reservations">
+        <h2>Id: <input type="number" name="reservationId" id="reservationId" value={{reservation.id}}></h2>
+        <h2>User Id: <input type="number" name="reservationUserId" id="reservationUserId" value={{reservation.userId}}></h2>
+        <h2>Car Id: <input type="number" name="reservationCarId" id="reservationCarId" value={{reservation.carId}}></h2>
+        <h2>Drivers: <input type="number" name="reservationBestuurders" id="reservationBestuurders" value={{reservation.Bestuurders}}></h2>
+        <h2>Price: <input type="number" name="reservationPrice" id="reservationPrice" value={{reservation.Price}}></h2>
+        <h2>Child Seat: <input type="text" name="reservationKinderstoel" id="reservationKinderstoel" value={{reservation.Kinderstoel}}></h2>
+        <h2>Navigation: <input type="text" name="reservationNavigatie" id="reservationNavigatie" value={{reservation.Navigatie}}></h2>
+        <h2>Full Tank: <input type="text" name="reservationVolgetankt" id="reservationVolgetankt" value={{reservation.Volgetankt}}></h2>
+        <h2>Start Date: <input type="text" name="reservationStartDate" id="reservationStartDate" value={{reservation.startDate}}></h2>
+        <h2>End Date: <input type="text" name="reservationEndDate" id="reservationEndDate" value={{reservation.endDate}}></h2>
+        <h2>Dropoff: <input type="text" name="reservationDropoff" id="reservationDropoff" value={{reservation.Dropoff}}></h2>
 
-        <img [src]='image'><br>
 
-        <button (click)="saveCar()">Save Changes</button>
-        <button (click)="deleteCar()">Delete Car</button>
-        <button (click)="noCar()">Close</button>
+        <button (click)="saveReservation()">Save Changes</button>
+        <button (click)="deleteReservation()">Delete Reservation</button>
+        <button (click)="noReservation()">Close</button>
       </div>
     </div>
   </div>

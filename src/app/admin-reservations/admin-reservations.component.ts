@@ -1,13 +1,9 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { CarClass } from './adminCar.model';
 import { UserReservation } from './adminReservation.model';
-import { CarService } from '../rent/car.service';
 import { ignoreElements, catchError, retry } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { User } from '../login/user.model';
 
 @Component({
   selector: 'app-admin-reservations',
@@ -15,21 +11,15 @@ import { User } from '../login/user.model';
   styleUrls: ['./admin-reservations.component.scss']
 })
 export class AdminReservationsComponent implements OnInit {
-  image: SafeUrl;
   public reservations: Array<UserReservation>;
   public reservation: UserReservation;
-  public cars: Array<CarClass>;
-  public car: CarClass;
   public selection: boolean;
   constructor(
     private http: HttpClient,
     private router: Router,
-    private carService: CarService,
-    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-    this.cars = [];
     this.reservations = [];
     this.selection = false;
   }
@@ -41,7 +31,6 @@ export class AdminReservationsComponent implements OnInit {
 
   noCar() {
     this.selection = false;
-    this.cars = [];
   }
 
 
@@ -55,6 +44,7 @@ export class AdminReservationsComponent implements OnInit {
         }
         this.selection = false;
       });
+    console.log(this.reservations);
   }
 
   getReservationById() {
@@ -70,119 +60,64 @@ export class AdminReservationsComponent implements OnInit {
 
   getReservationByUserID() {
     this.noReservation();
-    let id = (<HTMLInputElement>document.getElementById("id")).value;
+    let id = (<HTMLInputElement>document.getElementById("userId")).value;
     let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getReservationById?id=' + id, { responseType: 'text' })
+    this.http.get(IpLink + '/api/getReservationByUserId?id=' + id, { responseType: 'text' })
       .subscribe((response) => {
         this.reservations.push(JSON.parse(response));
         this.selection = true;
       });
   }
 
-
-
-  getCars() {
-    this.cars = [];
+  getReservationByCarID() {
+    this.noReservation();
+    let id = (<HTMLInputElement>document.getElementById("carId")).value;
     let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getCars', { responseType: 'json' })
+    this.http.get(IpLink + '/api/getReservationByCarId?id=' + id, { responseType: 'text' })
       .subscribe((response) => {
-        for (let i = 0; i < Object.keys(response).length; i++) {
-          this.car = response[i];
-          this.cars.push(this.car);
-        }
-        this.selection = false;
-      });
-  }
-
-  getCar() {
-    let id = (<HTMLInputElement>document.getElementById("id")).value;
-    let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getCarById?id=' + id, { responseType: 'text' })
-      .subscribe((response) => {
-        this.cars = [];
-        this.cars.push(JSON.parse(response));
+        this.reservations.push(JSON.parse(response));
         this.selection = true;
       });
-
   }
 
-  deleteCar() {
+  deleteReservation() {
     let id = (<HTMLInputElement>document.getElementById("id")).value;
     let IpLink = localStorage.getItem('serverIp');
-    if (confirm("Are you sure you want to delete this car?")) {
-      this.http.delete(IpLink + '/api/deleteCar?id=' + id, { responseType: 'text' })
+    if (confirm("Are you sure you want to delete this reservation?")) {
+      this.http.delete(IpLink + '/api/deleteReservation?id=' + id, { responseType: 'text' })
         .subscribe((response) => {
-          this.cars = [];
-          this.cars.push(JSON.parse(response));
+          this.reservations = [];
+          this.reservations.push(JSON.parse(response));
           this.selection = true;
           window.alert("Car Deleted!");
         });
     }
   }
 
-  saveCar() {
-    let carId = Number((<HTMLInputElement>document.getElementById("carId")).value);
-    let carBrand = (<HTMLInputElement>document.getElementById("carBrand")).value;
-    let carModel = (<HTMLInputElement>document.getElementById("carModel")).value;
-    let carLocation = (<HTMLInputElement>document.getElementById("carLocation")).value;
-    let carAge = Number((<HTMLInputElement>document.getElementById("carAge")).value);
-    let carMileage = Number((<HTMLInputElement>document.getElementById("carMileage")).value);
-    let carDoors = Number((<HTMLInputElement>document.getElementById("carDoors")).value);
-    let carImage = (<HTMLInputElement>document.getElementById("carImage")).value;
+  saveReservation() {
+    let reservationId = Number((<HTMLInputElement>document.getElementById("reservationId")).value);
+    let userId = Number((<HTMLInputElement>document.getElementById("reservationCarId")).value);
+    let carId = Number((<HTMLInputElement>document.getElementById("reservationCarId")).value);
+    let Bestuurders = Number((<HTMLInputElement>document.getElementById("reservationBestuurders")).value);
+    let Price = Number((<HTMLInputElement>document.getElementById("reservationPrice")).value);
+    let Kinderstoel = Boolean((<HTMLInputElement>document.getElementById("reservationKinderstoel")).value);
+    let Navigatie = Boolean((<HTMLInputElement>document.getElementById("reservationNavigatie")).value);
+    let Volgetankt = Boolean((<HTMLInputElement>document.getElementById("reservationVolgetankt")).value);
+    let startDate = new Date((<HTMLInputElement>document.getElementById("reservationStartDate")).value);
+    let endDate = new Date((<HTMLInputElement>document.getElementById("reservationEndDate")).value);
+    let Dropoff = (<HTMLInputElement>document.getElementById("reservationDropoff")).value;
 
-    let car = new CarClass(carId, carBrand, carModel, carLocation, carAge, carMileage, carDoors, carImage);
+    let reservation = new UserReservation(reservationId, userId, carId, Bestuurders, Price, Kinderstoel, Navigatie, Volgetankt, startDate, endDate, Dropoff);
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let body = JSON.stringify(car);
+    let body = JSON.stringify(reservation);
 
     let IpLink = localStorage.getItem('serverIp');
 
     if (confirm("Are you sure you?")) {
-      this.http.put(IpLink + '/api/updateCar?id=' + carId, body, { headers, responseType: 'text' })
+      this.http.put(IpLink + '/api/updateReservation?id=' + reservationId, body, { headers, responseType: 'text' })
         .subscribe((response) => {
           window.alert("Changes Saved!");
         });
     }
-  }
-
-  searchCars() {
-    this.getCars();
-    setTimeout(() => {
-      let keywords = (<HTMLInputElement>document.getElementById("search")).value.split(" ");
-      let newCars = [];
-
-      this.cars.forEach(car => {
-        keywords.forEach(keyword => {
-          if (car.brand.toLowerCase().includes(keyword.toLowerCase())) {
-            newCars.push(car);
-          }
-          else if (car.model.toLowerCase().includes(keyword.toLowerCase())) {
-            newCars.push(car);
-          }
-          else if (car.location.toLowerCase().includes(keyword.toLowerCase())) {
-            newCars.push(car);
-          }
-        });
-      });
-
-      this.cars = newCars;
-
-    }, 1000);
-
-
-  }
-
-  getImage() {
-    let img = (<HTMLInputElement>document.getElementById("carImage")).value;
-    let headers = new HttpHeaders({
-      'Content-Type': 'image/png',
-      'Accept': 'image/png'
-    });
-    let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getImageByPath?path=' + img, { headers, observe: 'response', responseType: 'text' })
-      .subscribe((response) => {
-        let objectURL = 'data:image/png;base64,' + response.body;
-        this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      },
-        error => console.log(error))
   }
 }
