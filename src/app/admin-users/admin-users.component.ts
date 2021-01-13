@@ -1,6 +1,8 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from './adminUser.model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../login/login-service.service';
+import { User } from '../login/user.model';
 import { ignoreElements, catchError, retry } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -18,22 +20,52 @@ export class AdminUsersComponent implements OnInit {
   public users: Array<User>;
   public user: User;
   public selection: boolean;
+  public newAdmin: boolean;
+  public registerForm: FormGroup;
   constructor(
     private http: HttpClient,
     private router: Router,
     private adminUsersService: AdminUsersService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private formBuilder: FormBuilder,
+    private loginService: LoginService
   ) { }
 
 
   ngOnInit(): void {
     this.users = this.adminUsersService.returnUsers();
     this.selection = false;
+    this.newAdmin = false;
+    this.registerForm = this.formBuilder.group({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      userName: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      Address: new FormControl('', [Validators.required]),
+      Age: new FormControl('', [Validators.required]),
+      PhoneNumber: new FormControl('', [Validators.required]),
+      EmailAddress: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    });
+  }
+
+  onSubmit(values) {
+    const userToBeAdded = new User(values.firstName, values.lastName, values.userName, values.password, values.Address, values.EmailAddress, values.Age, values.PhoneNumber, true);
+    this.loginService.addUser(userToBeAdded)
+      .subscribe((response) => {
+        alert(response)
+      },
+        (error) => {
+          console.log(error)
+        })
   }
 
   noUser() {
     this.selection = false;
     this.users = [];
+  }
+
+  createNewAdmin() {
+    this.newAdmin = true;
   }
 
 
@@ -65,15 +97,19 @@ export class AdminUsersComponent implements OnInit {
   }
 
   saveUser() {
-    let userId = Number((<HTMLInputElement>document.getElementById("userId")).value);
+
     let userFirstName = (<HTMLInputElement>document.getElementById("userFirstName")).value;
     let userLastName = (<HTMLInputElement>document.getElementById("userLastName")).value;
     let userUserName = (<HTMLInputElement>document.getElementById("userUserName")).value;
     let userPassword = ((<HTMLInputElement>document.getElementById("userPassword")).value);
     let userAddress = ((<HTMLInputElement>document.getElementById("userAddress")).value);
     let userEmail = ((<HTMLInputElement>document.getElementById("userEmail")).value);
+    let userAge = new Date((<HTMLInputElement>document.getElementById("userAge")).value);
+    let userPhonenumber = ((<HTMLInputElement>document.getElementById("userPhone")).value);
+    let userAdmin = Boolean((<HTMLInputElement>document.getElementById("userAdmin")).value);
+    let userId = Number((<HTMLInputElement>document.getElementById("userId")).value);
 
-    let user = new User(userId, userFirstName, userLastName, userUserName, userPassword, userAddress, userEmail);
+    let user = new User(userFirstName, userLastName, userUserName, userPassword, userAddress, userEmail, userAge, userPhonenumber, userAdmin, userId);
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let body = JSON.stringify(user);
 

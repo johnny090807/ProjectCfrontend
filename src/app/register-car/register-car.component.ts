@@ -45,26 +45,26 @@ export class RegisterCarComponent implements OnInit {
     const IpLink = localStorage.getItem('serverIp');
 
     // console.log(this.CarRegisterForm)
-    this.http.post(IpLink + '/api/addImage', pic, {responseType: 'text'})
-    .subscribe(res => {
-      console.log(res);
-      headers = new HttpHeaders({'Content-Type': 'application/json'});
-      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, values.price, res);
-      let body = JSON.stringify(carToBeAdded);
-      this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
-      .subscribe(message => {
-        alert(message) 
-        this.CarRegisterForm.controls['brand'].patchValue('')
-        this.CarRegisterForm.controls['model'].patchValue('')
-        this.CarRegisterForm.controls['location'].patchValue('')
-        this.CarRegisterForm.controls['carAge'].patchValue('')
-        this.CarRegisterForm.controls['mileage'].patchValue('')
-        this.CarRegisterForm.controls['price'].patchValue('')
-        this.CarRegisterForm.controls['doors'].patchValue('')
-        // window.location.reload();
-      },
-      error => alert(error.message))
-    }), error => alert(error.message)
+    this.http.post(IpLink + '/api/addImage', pic, { responseType: 'text' })
+      .subscribe(res => {
+        console.log(res);
+        headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const carToBeAdded = new CarClass(values.brand, values.model, values.location, values.carAge, values.mileage, values.doors, values.price, res);
+        let body = JSON.stringify(carToBeAdded);
+        this.http.post(IpLink + '/api/addCar', body, { headers, responseType: 'text' })
+          .subscribe(message => {
+            alert(message)
+            this.CarRegisterForm.controls['brand'].patchValue('')
+            this.CarRegisterForm.controls['model'].patchValue('')
+            this.CarRegisterForm.controls['location'].patchValue('')
+            this.CarRegisterForm.controls['carAge'].patchValue('')
+            this.CarRegisterForm.controls['mileage'].patchValue('')
+            this.CarRegisterForm.controls['price'].patchValue('')
+            this.CarRegisterForm.controls['doors'].patchValue('')
+            // window.location.reload();
+          },
+            error => alert(error.message))
+      }), error => alert(error.message)
 
 
   }
@@ -114,16 +114,15 @@ export class RegisterCarComponent implements OnInit {
     };
     reader.readAsDataURL(this.selectedFile);
   }
-    // OnUploadFile() {
-    // //Upload file here send a binary data
-    //   this.http.post('api/file-upload', this.selectedFile)
-    //   .subscribe(message => alert(message),
-    //   error => alert(error.message));
-    // }
+  // OnUploadFile() {
+  // //Upload file here send a binary data
+  //   this.http.post('api/file-upload', this.selectedFile)
+  //   .subscribe(message => alert(message),
+  //   error => alert(error.message));
+  // }
 
 }
 
-}
   // OnUploadFile() {
   // //Upload file here send a binary data
   //   this.http.post('api/file-upload', this.selectedFile)

@@ -50,19 +50,6 @@ export class AdminCarsComponent implements OnInit {
       });
   }
 
-  // getCars() {
-  //   this.cars = [];
-  //   let IpLink = localStorage.getItem('serverIp');
-  //   this.http.get(IpLink + '/api/getCars', { responseType: 'json' })
-  //     .subscribe((response) => {
-  //       for (let i = 0; i < Object.keys(response).length; i++) {
-  //         this.car = response[i];
-  //         this.cars.push(this.car);
-  //       }
-  //       this.selection = false;
-  //     });
-  // }
-
   getCar() {
     let id = (<HTMLInputElement>document.getElementById("id")).value;
     let IpLink = localStorage.getItem('serverIp');
