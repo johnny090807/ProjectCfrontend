@@ -24,6 +24,7 @@ import { ResDetailsComponent } from './res-details/res-details.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminCarsComponent } from './admin-cars/admin-cars.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ResDetailsComponent,
     AdminUsersComponent,
     AdminCarsComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AdminReservationsComponent
   ],
   imports: [
     BrowserModule,

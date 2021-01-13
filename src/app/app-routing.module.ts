@@ -8,6 +8,7 @@ import { RentComponent } from './rent/rent.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminCarsComponent } from './admin-cars/admin-cars.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterCarComponent } from './register-car/register-car.component';
 import { CarReservationComponent } from './car-reservation/car-reservation.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'Admin', component: AdminComponent },
   { path: 'AdminCars', component: AdminCarsComponent },
   { path: 'AdminUsers', component: AdminUsersComponent },
+  { path: 'AdminReservations', component: AdminReservationsComponent },
   { path: 'Contact', component: ContactComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'Login', component: LoginComponent },
