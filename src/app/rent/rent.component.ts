@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { promise } from 'protractor';
+//import { promise } from 'protractor';
 import { Car } from './car.model';
 import { CarService } from './car.service';
 @Component({

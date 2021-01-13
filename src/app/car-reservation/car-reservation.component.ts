@@ -36,6 +36,11 @@ export class CarReservationComponent implements OnInit {
       }),
     });
   }
+  mapsLocation = '';
+  Onclick(){
+    var g = "//www.google.com/maps?q=";
+    this.mapsLocation = g.concat(this.car.location);
+  }
   LoggedIn(){
     this.loggedInUser = this.loginService.loggedInUser;
     return this.loggedInUser

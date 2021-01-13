@@ -32,5 +32,15 @@
             grid-row: 3;
             grid-column: 3;
         }
+        a {
+            background-color: red;
+            color: white;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            text-transform: uppercase;
+          }          
+          a:visited {
+            background-color: #ccc;
+          }
     }
 }
