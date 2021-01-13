@@ -20,12 +20,12 @@
             <p>{{this.car.model}}</p>
         </div>
         <div class="Price">
-            <p>Vanaf: €{{this.car.price}} p/d</p>
+            <p>Price: €{{this.car.price}} p/d</p>
         </div>
 
         <div class="confirmation-tab">
             <div>
-                <button [routerLink]="['/Res', this.car.id]" *ngIf="this.LoggedIn() != null">Reserveer</button>
+                <button [routerLink]="['/Res', this.car.id]" *ngIf="this.LoggedIn() != null">Reserve</button>
                 <button [routerLink]="['/Login']" *ngIf="this.LoggedIn() == null">Login!</button>
                 <button routerLink="/Rent">Cancel</button>
             </div>
