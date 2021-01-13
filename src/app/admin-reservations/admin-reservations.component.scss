@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+body,
+html {
+  font-style: Helvetica;
+  overflow-x: hidden;
+  background: rgb(7, 46, 59);
+  color: rgb(255, 255, 255);
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.reservation {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-gap: 1em;
+  // grid-auto-rows: 10%;
+  grid-auto-columns: 20em;
+  background: rgb(98, 14, 14);
+  padding: 1em;
+  stroke: antiquewhite;
+}
+
+h1 {
+  font-size: xxx-large;
+  font-family: Helvetica;
+}
