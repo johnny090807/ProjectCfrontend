@@ -36,6 +36,7 @@ export class LoginService {
         response['email'],
         response['age'],
         response['phonenumber'],
+        response['admin'],
         response['id']
       );
       this.loggedInUser = user;
@@ -55,6 +56,7 @@ export class LoginService {
         response['email'],
         response['age'],
         response['phonenumber'],
+        response['admin'],
         response['id']
       );
       if (user.firstName == null && user.lastName == null && user.address == null && user.email == null && user.username == null && user.password == null){

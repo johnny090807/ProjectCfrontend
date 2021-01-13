@@ -6,6 +6,7 @@ export class CarClass {
         public carAge: number,
         public mileage: number,
         public doors: number,
+        public price: number,
         public imagePath?: string
     ){}
 }

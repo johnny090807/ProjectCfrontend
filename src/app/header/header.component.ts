@@ -29,6 +29,14 @@ export class HeaderComponent implements OnInit {
     this.loggedInUser = this.loginService.loggedInUser;
     return this.loginService.loggedInUser;
   }
+  public isAdmin(){
+    if(this.loggedIn()){
+      return this.loggedInUser.admin;
+      
+    }else{
+      return false;
+    }
+  }
   public Logout() {
     var res = confirm("Do you really want to logout?");
     if (res) {

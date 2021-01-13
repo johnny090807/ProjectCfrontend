@@ -33,6 +33,7 @@ export class RegisterCarComponent implements OnInit {
       location: ['', Validators.required],
       carAge: ['', Validators.required],
       mileage: ['', Validators.required],
+      price: ['', Validators.required],
       doors: [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
     });
   }
@@ -47,12 +48,19 @@ export class RegisterCarComponent implements OnInit {
     .subscribe(res => {
       console.log(res);
       headers = new HttpHeaders({'Content-Type': 'application/json'});
-      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, res);
+      const carToBeAdded = new CarClass(values.brand,values.model, values.location,values.carAge, values.mileage, values.doors, values.price, res);
       let body = JSON.stringify(carToBeAdded);
       this.http.post(IpLink + '/api/addCar', body, {headers, responseType: 'text'})
       .subscribe(message => {
         alert(message) 
-        window.location.reload();
+        this.CarRegisterForm.controls['brand'].patchValue('')
+        this.CarRegisterForm.controls['model'].patchValue('')
+        this.CarRegisterForm.controls['location'].patchValue('')
+        this.CarRegisterForm.controls['carAge'].patchValue('')
+        this.CarRegisterForm.controls['mileage'].patchValue('')
+        this.CarRegisterForm.controls['price'].patchValue('')
+        this.CarRegisterForm.controls['doors'].patchValue('')
+        // window.location.reload();
       },
       error => alert(error.message))
     }), error => alert(error.message)

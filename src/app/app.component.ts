@@ -18,7 +18,7 @@ export class AppComponent {
               private loginService: LoginService,
               private sanitizer: DomSanitizer,
               private carService: CarService){
-                localStorage.setItem('serverIp', 'http://51.144.75.83:8080/CrsX-1.0-SNAPSHOT')
+                localStorage.setItem('serverIp', 'http://localhost:8080')
                 this.getImage()
                 this.loginService.loggedIn()
                 this.carService.getAllCars()

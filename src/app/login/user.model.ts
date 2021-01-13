@@ -6,8 +6,9 @@ export class User {
     public password: string,
     public address: string,
     public email: string,
-    public Age?: Date,
-    public PhoneNumber?: string,
+    public age?: Date,
+    public phoneNumber?: string,
+    public admin?: boolean,
     public id?: number
   ) { }
 }

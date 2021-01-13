@@ -66,6 +66,20 @@
         </div>
         <p *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)" class="help is-danger">This is not a correct email address</p>
       </div>
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Birth date:</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)}"class="input" type="date" formControlName="Age" placeholder="e.g alexsmith78@gmail.com" required>
+        </div>
+        <p *ngIf="registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)" class="help is-danger">This is not a correct birth date</p>
+      </div>
+      <div class="field mx-6 px-6">
+        <label class="label" style="color: white;">Phone number:</label>
+        <div class="control">
+          <input [ngClass]="{'is-danger': registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)}"class="input" type="text" formControlName="PhoneNumber" placeholder="e.g 0612345678" required>
+        </div>
+        <p *ngIf="registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)" class="help is-danger">This is not a correct phone number</p>
+      </div>
       <br>
       <div class="buttons has-addons is-centered">
         <br>

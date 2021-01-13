@@ -86,6 +86,10 @@ export class ResDetailsComponent implements OnInit {
       "endDate": endDate,
       "Location": Location,
     }
+    if(Location == null){
+      alert("Select dropoff location")
+      return
+    }
     let checkDate: Date[] = this.getDaysArray(startDate,endDate)
     for(let date in checkDate){
       for(let date2 in this.ReservationDates){

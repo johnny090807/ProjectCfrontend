@@ -42,6 +42,10 @@
             <input class="input" type="number" formControlName="doors" required>
         </div>
         <div class="field">
+            <label for="price">Price:</label><br>
+            <input class="input" type="number" formControlName="price" required>
+        </div>
+        <div class="field">
           <br>
           <label for="carPicture">Upload a picture of the car:</label><br><br>
           <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>

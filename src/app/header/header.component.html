@@ -57,18 +57,18 @@
       <a class="navbar-item" routerLink="Contact">Contact</a>
 
       <a class="navbar-item" routerLink="Rent">Rent</a>
-      <a class="navbar-item" routerLink="Admin">Admin</a>
+      <a class="navbar-item" *ngIf="this.isAdmin()" routerLink="Admin">Admin</a>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
           <div *ngIf="this.loggedIn() == null" class="navbar-end">
-            <a class="button is-info" routerLink="Login">Login</a>
-            <a class="button is-light" routerLink="Register">Register</a>
+            <a class="button is-light" routerLink="Login">Login</a>
+            <a class="button is-light is-outlined" routerLink="Register">Register</a>
           </div>
           <div *ngIf="this.loggedIn() != null" class="navbar-end">
-          <a class="button is-light" routerLink="CarRegister">Add car!</a>
+          <a class="button is-light" routerLink="CarRegister" *ngIf="this.isAdmin()" >Add car!</a>
             <a class="button is-info" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
             <a class="button is-danger" (click)="this.Logout()">Logout</a>
           </div>
