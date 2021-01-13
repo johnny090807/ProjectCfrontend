@@ -30,20 +30,5 @@
                 </table>
             </div>
         </div>
-    <div style="margin-bottom: 500px"></div>
-    <button class="button" (click)="test()"> test</button>
-    <a>{{NewPW}}</a>
-    <button class="button" (click)="popupPW=true" > Change Password </button>
-    <div *ngIf="popupPW" >
-          <a> Insert new password</a>
-          <input class="input" #pw1>
-          <a> Confirm new password</a>
-          <input class="input" #confirmPW>
-          <button class="button" (click)="PwchangeConfirm(pw1.value,confirmPW.value)" > Confirm </button>
-          <button class="button"  (click)="popupPW=false"> Close  </button>
     </div>
-
-    </div>
-
-
 </div>

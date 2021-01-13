@@ -7,10 +7,39 @@
     <link rel="stylesheet" href="admin.component.html" />
   </head>
   <body>
-    <div class="grid">
-        <a class="gridItem" routerLink="/AdminUsers"><h1>Accounts</h1> </a>
-        <a class="gridItem" routerLink="/AdminCars"><h1>Cars</h1> </a>
-        <a class="gridItem" routerLink="/AdminReservations"><h1>Reservations</h1> </a>
+    <div class="columns is-vcentered is-centered has-text-centered py-6">
+      <div class="column is-8">
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-dark">
+            <p class="title"><a class="gridItem" routerLink="/AdminUsers">Accounts</a></p>
+            <p class="subtitle">Check and modify accounts</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </article>
+        </div>
+        <br>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-dark">
+          <p class="title"><a class="gridItem" routerLink="/AdminCars">Cars</a></p>
+          <p class="subtitle">View and modify cars</p>
+          <div class="content">
+            <!-- Content -->
+          </div>
+        </article>
+      </div>
+      <br>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-dark">
+        <p class="title"><a class="gridItem" routerLink="/AdminReservations">Reservations</a></p>
+        <p class="subtitle">Check reservations</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+    <br>
+      </div>
     </div>
   </body>
 </html>

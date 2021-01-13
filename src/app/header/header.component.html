@@ -1,56 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <title>Login</title>
-</head>
-<body> -->
-<!-- <nav class ="navbar is-dark is-bold">
-   Logo
-  <div class = "navbar-brand is-capitalized">
-   <a class = "navbar-item has-text-weight-bold is-capitalized">
-    CrsX
-   </a>
-   </div>
-
-       menu
-  <div class="navbar-menu">
-  <div class="navbar-start">
-    <a class="navbar-item" routerLink="Home">Home</a>
-    <a class="navbar-item" routerLink="Contact">Contact</a>
-    <a class="navbar-item" routerLink="Rent">Rent</a>
-    <a class="navbar-item" routerLink="Admin">Admin</a>
-  </div>
-  <div *ngIf="this.loggedIn() == null" class="navbar-end">
-    <a class="navbar-item" routerLink="Login">Login</a>
-    <a class="navbar-item" routerLink="Register">Register</a>
-  </div>
-  <div *ngIf="this.loggedIn() != null" class="navbar-end">
-  <a class="navbar-item" routerLink="CarRegister">Add car!</a>
-    <a class="navbar-item" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
-    <a class="navbar-item" (click)="this.Logout()">Logout</a>
-  </div>
-  </div>
-</nav> -->
-<!-- </body>
-</html> -->
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" [routerLink]="['/Home']" routerLinkActive="router-link-active" >
       CrsX
     </a>
-<!--
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" (click)="changeExpanded()">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a> -->
+
   </div>
-
-  <!-- <div id="navbarBasicExample" *ngIf="this.expanded" class="navbar-menu"> -->
-
     <div class="navbar-start">
       <a class="navbar-item" routerLink="Home">Home</a>
 
@@ -68,17 +22,10 @@
           </div>
           <div *ngIf="this.loggedIn() != null" class="navbar-end">
           <a class="button is-light" routerLink="Admin" *ngIf="this.isAdmin()" >Admin</a>
-            <a class="button is-info" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
-            <a class="button is-danger" (click)="this.Logout()">Logout</a>
+            <a class="button is-white is-outlined" [routerLink]="['/User', this.loggedInUser.id]">{{this.loggedInUser.firstName}} {{this.loggedInUser.lastName}}</a>
+            <a class="button is-outlined is-danger" (click)="this.Logout()">Logout</a>
           </div>
-          <!-- <a class="button is-info">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a> -->
         </div>
       </div>
-    <!-- </div> -->
   </div>
 </nav>

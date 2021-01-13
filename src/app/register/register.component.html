@@ -17,80 +17,84 @@
 
 <section class="section">
 <div class="container">
-  <div class="field">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Name</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)}"class="input" type="text" formControlName="firstName" placeholder="e.g Alex" required>
-        </div>
-        <p *ngIf="registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched && registerForm.controls.firstName.errors.required)" class="help is-danger">Please fill in a correct name</p>
-      </div>
+  <div class="columns is-vcentered is-centered">
+    <div class="column is-7">
+      <div class="field">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Name</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched)}"class="input" type="text" formControlName="firstName" placeholder="e.g Alex" required>
+            </div>
+            <p *ngIf="registerForm.controls.firstName.invalid && (registerForm.controls.firstName.dirty || registerForm.controls.firstName.touched && registerForm.controls.firstName.errors.required)" class="help is-danger">Please fill in a correct name</p>
+          </div>
 
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Surname</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)}"class="input" type="text" formControlName="lastName" placeholder="e.g Smith" required>
-        </div>
-        <p *ngIf="registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched && registerForm.controls.lastName.errors.required)" class="help is-danger">Please fill in a correct surname</p>
-      </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Surname</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched)}"class="input" type="text" formControlName="lastName" placeholder="e.g Smith" required>
+            </div>
+            <p *ngIf="registerForm.controls.lastName.invalid && (registerForm.controls.lastName.dirty || registerForm.controls.lastName.touched && registerForm.controls.lastName.errors.required)" class="help is-danger">Please fill in a correct surname</p>
+          </div>
 
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Username</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)}"class="input" type="text" formControlName="userName" placeholder="e.g AlexSmith" required>
-        </div>
-        <p *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)" class="help is-danger">Please fill in a correct username</p>
-      </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Username</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)}"class="input" type="text" formControlName="userName" placeholder="e.g AlexSmith" required>
+            </div>
+            <p *ngIf="registerForm.controls.userName.invalid && (registerForm.controls.userName.dirty || registerForm.controls.userName.touched && registerForm.controls.userName.errors.required)" class="help is-danger">Please fill in a correct username</p>
+          </div>
 
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Password</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)}"class="input" type="password" formControlName="password" placeholder="personal preference" required>
-        </div>
-        <p *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)" class="help is-danger">Please fill in a correct password</p>
-      </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Password</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)}"class="input" type="password" formControlName="password" placeholder="personal preference" required>
+            </div>
+            <p *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched && registerForm.controls.password.errors.required)" class="help is-danger">Please fill in a correct password</p>
+          </div>
 
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Address</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)}"class="input" type="text" formControlName="Address" placeholder="e.g Somestreet 123" required>
-        </div>
-        <p *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)" class="help is-danger">Please fill in a correct Address</p>
-      </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Address</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)}"class="input" type="text" formControlName="Address" placeholder="e.g Somestreet 123" required>
+            </div>
+            <p *ngIf="registerForm.controls.Address.invalid && (registerForm.controls.Address.dirty || registerForm.controls.Address.touched && registerForm.controls.Address.errors.required)" class="help is-danger">Please fill in a correct Address</p>
+          </div>
 
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Email address</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)}"class="input" type="text" formControlName="EmailAddress" placeholder="e.g alexsmith78@gmail.com" required>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Email address</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)}"class="input" type="text" formControlName="EmailAddress" placeholder="e.g alexsmith78@gmail.com" required>
+            </div>
+            <p *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)" class="help is-danger">This is not a correct email address</p>
+          </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Birth date:</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)}"class="input" type="date" formControlName="Age" placeholder="e.g alexsmith78@gmail.com" required>
+            </div>
+            <p *ngIf="registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)" class="help is-danger">This is not a correct birth date</p>
+          </div>
+          <div class="field mx-6 px-6">
+            <label class="label" style="color: white;">Phone number:</label>
+            <div class="control">
+              <input [ngClass]="{'is-danger': registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)}"class="input" type="text" formControlName="PhoneNumber" placeholder="e.g 0612345678" required>
+            </div>
+            <p *ngIf="registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)" class="help is-danger">This is not a correct phone number</p>
+          </div>
+          <br>
+          <div class="buttons has-addons is-centered">
+            <br>
+            <button class="button is-white is-outlined" type="submit" [disabled]="!this.registerForm.valid" value="Register">Register</button>
+          </div>
+          <div class="has-text-centered has-text-white">
+            <br> <p>If you already have an account click <a routerLink="/Login">here</a> to log in</p>
+          </div>
+          </form>
         </div>
-        <p *ngIf="registerForm.controls.EmailAddress.invalid && (registerForm.controls.EmailAddress.dirty || registerForm.controls.EmailAddress.touched && registerForm.controls.EmailAddress.errors.required)" class="help is-danger">This is not a correct email address</p>
       </div>
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Birth date:</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)}"class="input" type="date" formControlName="Age" placeholder="e.g alexsmith78@gmail.com" required>
-        </div>
-        <p *ngIf="registerForm.controls.Age.invalid && (registerForm.controls.Age.dirty || registerForm.controls.Age.touched && registerForm.controls.Age.errors.required)" class="help is-danger">This is not a correct birth date</p>
       </div>
-      <div class="field mx-6 px-6">
-        <label class="label" style="color: white;">Phone number:</label>
-        <div class="control">
-          <input [ngClass]="{'is-danger': registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)}"class="input" type="text" formControlName="PhoneNumber" placeholder="e.g 0612345678" required>
-        </div>
-        <p *ngIf="registerForm.controls.PhoneNumber.invalid && (registerForm.controls.PhoneNumber.dirty || registerForm.controls.PhoneNumber.touched && registerForm.controls.PhoneNumber.errors.required)" class="help is-danger">This is not a correct phone number</p>
-      </div>
-      <br>
-      <div class="buttons has-addons is-centered">
-        <br>
-        <button class="button is-white is-outlined" type="submit" [disabled]="!this.registerForm.valid" value="Register">Register</button>
-      </div>
-      <div class="has-text-centered has-text-white">
-        <br> <p>If you already have an account click <a routerLink="/Login">here</a> to log in</p>
-      </div>
-      </form>
-    </div>
-  </div>
+</div>
 </section>
 </body>
 </html>
