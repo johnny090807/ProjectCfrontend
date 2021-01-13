@@ -90,23 +90,26 @@ export class AdminReservationsComponent implements OnInit {
     this.noReservation();
     let id = (<HTMLInputElement>document.getElementById("userId")).value;
     let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getReservationByUserId?id=' + id, { responseType: 'text' })
+    this.http.get(IpLink + '/api/getReservationByUserId?id=' + id, { responseType: 'json' })
       .subscribe((response) => {
-        console.log(JSON.parse(response));
-        this.reservations.push(JSON.parse(response));
+        this.reservations.push(response[0]);
         this.reservations[0].startDate = new Date(this.reservations[0].startDate);
         this.reservations[0].endDate = new Date(this.reservations[0].endDate);
         this.selection = true;
       });
+    this.reservations.forEach(r => {
+      console.log(r);
+
+    });
   }
 
   getReservationByCarID() {
     this.noReservation();
     let id = (<HTMLInputElement>document.getElementById("carId")).value;
     let IpLink = localStorage.getItem('serverIp');
-    this.http.get(IpLink + '/api/getReservationByCarId?id=' + id, { responseType: 'text' })
+    this.http.get(IpLink + '/api/getReservationByCarId?id=' + id, { responseType: 'json' })
       .subscribe((response) => {
-        this.reservations.push(JSON.parse(response));
+        this.reservations.push(response[0]);
         this.reservations[0].startDate = new Date(this.reservations[0].startDate);
         this.reservations[0].endDate = new Date(this.reservations[0].endDate);
         this.selection = true;

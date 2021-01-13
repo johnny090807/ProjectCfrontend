@@ -14,18 +14,18 @@
 
   <div *ngIf="selection">
     <div class="reservation">
-      <div *ngFor="let reservation of this.reservations">
-        <h2>Id: <input type="number" name="reservationId" id="reservationId" value={{reservation.id}}></h2>
-        <h2>User Id: <input type="number" name="reservationUserId" id="reservationUserId" value={{reservation.userId}}></h2>
-        <h2>Car Id: <input type="number" name="reservationCarId" id="reservationCarId" value={{reservation.carId}}></h2>
-        <h2>Drivers: <input type="number" name="reservationBestuurders" id="reservationBestuurders" value={{reservation.bestuurders}}></h2>
-        <h2>Price: <input type="number" name="reservationPrice" id="reservationPrice" value={{reservation.price}}></h2>
-        <h2>Child Seat: <input type="text" name="reservationKinderstoel" id="reservationKinderstoel" value={{reservation.kinderstoel}}></h2>
-        <h2>Navigation: <input type="text" name="reservationNavigatie" id="reservationNavigatie" value={{reservation.navigatie}}></h2>
-        <h2>Full Tank: <input type="text" name="reservationVolgetankt" id="reservationVolgetankt" value={{reservation.volgetankt}}></h2>
-        <h2>Start Date: <input type="text" name="reservationStartDate" id="reservationStartDate" value={{reservation.startDate}}></h2>
-        <h2>End Date: <input type="text" name="reservationEndDate" id="reservationEndDate" value={{reservation.endDate}}></h2>
-        <h2>Dropoff: <input type="text" name="reservationDropoff" id="reservationDropoff" value={{reservation.dropoff}}></h2>
+      <div *ngFor="let r of this.reservations">
+        <h2>Id: <input type="number" name="reservationId" id="reservationId" value={{r.id}}></h2>
+        <h2>User Id: <input type="number" name="reservationUserId" id="reservationUserId" value={{r.userId}}></h2>
+        <h2>Car Id: <input type="number" name="reservationCarId" id="reservationCarId" value={{r.carId}}></h2>
+        <h2>Drivers: <input type="number" name="reservationBestuurders" id="reservationBestuurders" value={{r.bestuurders}}></h2>
+        <h2>Price: <input type="number" name="reservationPrice" id="reservationPrice" value={{r.price}}></h2>
+        <h2>Child Seat: <input type="text" name="reservationKinderstoel" id="reservationKinderstoel" value={{r.kinderstoel}}></h2>
+        <h2>Navigation: <input type="text" name="reservationNavigatie" id="reservationNavigatie" value={{r.navigatie}}></h2>
+        <h2>Full Tank: <input type="text" name="reservationVolgetankt" id="reservationVolgetankt" value={{r.volgetankt}}></h2>
+        <h2>Start Date: <input type="text" name="reservationStartDate" id="reservationStartDate" value={{r.startDate}}></h2>
+        <h2>End Date: <input type="text" name="reservationEndDate" id="reservationEndDate" value={{r.endDate}}></h2>
+        <h2>Dropoff: <input type="text" name="reservationDropoff" id="reservationDropoff" value={{r.dropoff}}></h2>
 
 
         <button (click)="saveReservation()">Save Changes</button>
