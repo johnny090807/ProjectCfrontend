@@ -160,7 +160,7 @@ export class AdminUsersComponent implements OnInit {
         .subscribe((response) => {
           this.users = [];
           this.selection = false;
-          window.alert("Car Deleted!");
+          window.alert("User Deleted!");
         });
     }
   }
