@@ -10,11 +10,6 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   public loggedInUser: User;
-  // Users : Array<User>= [
-  //   {id: 0, firstName: "John", lastName: "Klees", userName:"admin", password:"geheim", address: "ergens DC.213", email: "Email@gmail.com", admin:false},
-  //   {id: 1, firstName: "Rey", lastName: "Leon", userName:"test", password:"test1", address: "ergens DC.213", email: "Email@gmail.com", admin:false},
-  //   {id: 2, firstName: "David", lastName: "Neres", userName:"test", password:"test2", address: "ergens DC.213", email: "Email@gmail.com", admin:false},
-  // ]
   constructor(private http: HttpClient,
               private router: Router) { 
                 

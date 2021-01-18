@@ -87,7 +87,7 @@ export class ResDetailsComponent implements OnInit {
       "Location": Location,
     }
     if(Location == null){
-      alert("Select dropoff location")
+      alert("Select a dropoff location.")
       return
     }
     let checkDate: Date[] = this.getDaysArray(startDate,endDate)
